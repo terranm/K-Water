@@ -1,0 +1,47 @@
+fileFormatVersion: 2
+guid: 70d77d6f2ac386a42830ed9011b4d5b7
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Character_Controller_1 = require(\"ZEPETO.Character.Controller\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst GameBaseData_1 = require(\"./Managers/GameBaseData\");\r\nconst
+    GameManager_1 = require(\"./Managers/GameManager\");\r\nclass SitOut extends
+    ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    // private waitforfixedupdate:WaitForFixedUpdate;\r\n   
+    Start() {\r\n        this.isSitting = false;\r\n        this.col = this.transform.GetComponents($typeof(UnityEngine_1.BoxCollider))[0];\r\n       
+    this.col.enabled = false;\r\n        // this.waitforfixedupdate = new WaitForFixedUpdate();\r\n   
+    }\r\n    OnTriggerEnter(collider) {\r\n        let baseData = GameBaseData_1.default.instance;\r\n       
+    if (baseData.CanITriggerActivating(collider)) {\r\n            this.isSitting
+    = true;\r\n            this.StartCoroutine(this.SittingCheck());\r\n        }\r\n   
+    }\r\n    *SittingCheck() {\r\n        while (this.isSitting) {\r\n           
+    yield new UnityEngine_1.WaitForFixedUpdate(); //GameBaseData.instance.WaitForFixed_Update;//\r\n           
+    let character = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character;\r\n           
+    if (character.tryMove || character.tryJump) {\r\n                console.log(\"tryMove
+    \", character.tryMove, \"tryJump \", character.tryJump);\r\n                if
+    (this.isSitting) {\r\n                    this.isSitting = false;\r\n                   
+    let button = this.transform.parent.GetChild(2).GetChild(0);\r\n                   
+    GameManager_1.default.instance.PlayerSitOut(button);\r\n                }\r\n           
+    }\r\n        }\r\n        this.StopCoroutine(this.SittingCheck());\r\n    }\r\n   
+    OnTriggerExit(collider) {\r\n        let baseData = GameBaseData_1.default.instance;\r\n       
+    if (baseData.CanITriggerActivating(collider)) {\r\n            if (!this.isSitting)\r\n               
+    return;\r\n            this.isSitting = false;\r\n            let button = this.transform.parent.GetChild(2).GetChild(0);\r\n           
+    GameManager_1.default.instance.PlayerSitOut(button);\r\n        }\r\n    }\r\n}\r\nexports.default
+    = SitOut;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiU2l0T3V0LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiU2l0T3V0LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQXdFO0FBQ3hFLDZFQUE0RDtBQUM1RCxpREFBcUQ7QUFDckQsMERBQW1EO0FBQ25ELHdEQUFpRDtBQUVqRCxNQUFxQixNQUFPLFNBQVEscUNBQXFCO0lBSXJELGlEQUFpRDtJQUNqRCxLQUFLO1FBQ0QsSUFBSSxDQUFDLFNBQVMsR0FBRyxLQUFLLENBQUM7UUFDdkIsSUFBSSxDQUFDLEdBQUcsR0FBRyxJQUFJLENBQUMsU0FBUyxDQUFDLGFBQWEsU0FBQyx5QkFBVyxHQUFJLENBQUMsQ0FBQyxDQUFDO1FBQzFELElBQUksQ0FBQyxHQUFHLENBQUMsT0FBTyxHQUFHLEtBQUssQ0FBQztRQUN6QixzREFBc0Q7SUFDMUQsQ0FBQztJQUVELGNBQWMsQ0FBQyxRQUFpQjtRQUM1QixJQUFJLFFBQVEsR0FBRyxzQkFBWSxDQUFDLFFBQVEsQ0FBQztRQUNyQyxJQUFHLFFBQVEsQ0FBQyxxQkFBcUIsQ0FBQyxRQUFRLENBQUMsRUFBQztZQUN4QyxJQUFJLENBQUMsU0FBUyxHQUFHLElBQUksQ0FBQztZQUN0QixJQUFJLENBQUMsY0FBYyxDQUFDLElBQUksQ0FBQyxZQUFZLEVBQUUsQ0FBQyxDQUFDO1NBQzVDO0lBQ0wsQ0FBQztJQUVELENBQUMsWUFBWTtRQUNULE9BQU0sSUFBSSxDQUFDLFNBQVMsRUFBQztZQUNqQixNQUFNLElBQUksZ0NBQWtCLEVBQUUsQ0FBQyxDQUFBLDhDQUE4QztZQUM3RSxJQUFJLFNBQVMsR0FBRywyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxXQUFXLENBQUMsWUFBWSxDQUFDLFNBQVMsQ0FBQTtZQUN6RSxJQUFJLFNBQVMsQ0FBQyxPQUFPLElBQUksU0FBUyxDQUFDLE9BQU8sRUFBQztnQkFDdkMsT0FBTyxDQUFDLEdBQUcsQ0FBQyxVQUFVLEVBQUUsU0FBUyxDQUFDLE9BQU8sRUFBRSxVQUFVLEVBQUUsU0FBUyxDQUFDLE9BQU8sQ0FBQyxDQUFDO2dCQUMxRSxJQUFJLElBQUksQ0FBQyxTQUFTLEVBQUU7b0JBQ2hCLElBQUksQ0FBQyxTQUFTLEdBQUcsS0FBSyxDQUFDO29CQUN2QixJQUFJLE1BQU0sR0FBRyxJQUFJLENBQUMsU0FBUyxDQUFDLE1BQU0sQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQyxDQUFDO29CQUMzRCxxQkFBVyxDQUFDLFFBQVEsQ0FBQyxZQUFZLENBQUMsTUFBTSxDQUFDLENBQUM7aUJBQzdDO2FBQ0o7U0FDSjtRQUNELElBQUksQ0FBQyxhQUFhLENBQUMsSUFBSSxDQUFDLFlBQVksRUFBRSxDQUFDLENBQUM7SUFDNUMsQ0FBQztJQUVELGFBQWEsQ0FBQyxRQUFpQjtRQUUzQixJQUFJLFFBQVEsR0FBRyxzQkFBWSxDQUFDLFFBQVEsQ0FBQztRQUNyQyxJQUFHLFFBQVEsQ0FBQyxxQkFBcUIsQ0FBQyxRQUFRLENBQUMsRUFDM0M7WUFDSSxJQUFJLENBQUMsSUFBSSxDQUFDLFNBQVM7Z0JBQUUsT0FBTztZQUM1QixJQUFJLENBQUMsU0FBUyxHQUFHLEtBQUssQ0FBQztZQUN2QixJQUFJLE1BQU0sR0FBRyxJQUFJLENBQUMsU0FBUyxDQUFDLE1BQU0sQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQyxDQUFDO1lBQzNELHFCQUFXLENBQUMsUUFBUSxDQUFDLFlBQVksQ0FBQyxNQUFNLENBQUMsQ0FBQztTQUM3QztJQUNMLENBQUM7Q0FDSjtBQS9DRCx5QkErQ0MifQ==","assetPath":"Assets/Scripts/SitOut.ts","manifest":{"properties":[],"name":"SitOut","description":""},"isCompiled":true}'
+  typescriptHash: 0b8524d949e84e2d32805f5ff26c8493
+  onlyWriteTrigger: 0

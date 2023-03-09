@@ -1,0 +1,33 @@
+fileFormatVersion: 2
+guid: e23f5bf80e14a5c498b6a5d338ff6d23
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst GameBaseData_1 = require(\"./Managers/GameBaseData\");\r\nclass
+    NPC_SpriteDel extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    Start()
+    {\r\n        this.imgSprite = this.transform.GetChild(1).GetComponent($typeof(UnityEngine_1.SpriteRenderer));\r\n   
+    }\r\n    OnTriggerEnter(collider) {\r\n        let baseData = GameBaseData_1.default.instance;\r\n       
+    if (!baseData.CanITriggerActivating(collider))\r\n            return;\r\n       
+    this.imgSprite.enabled = false;\r\n    }\r\n    OnTriggerExit(collider) {\r\n       
+    let baseData = GameBaseData_1.default.instance;\r\n        if (!baseData.CanITriggerActivating(collider))\r\n           
+    return;\r\n        this.imgSprite.enabled = true;\r\n    }\r\n}\r\nexports.default
+    = NPC_SpriteDel;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTlBDX1Nwcml0ZURlbC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIk5QQ19TcHJpdGVEZWwudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSw2Q0FBbUU7QUFFbkUsaURBQXFEO0FBQ3JELDBEQUFtRDtBQUVuRCxNQUFxQixhQUFjLFNBQVEscUNBQXFCO0lBRTVELEtBQUs7UUFFRCxJQUFJLENBQUMsU0FBUyxHQUFHLElBQUksQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQyxDQUFDLFlBQVksU0FBQyw0QkFBYyxFQUFHLENBQUM7SUFDL0UsQ0FBQztJQUVELGNBQWMsQ0FBQyxRQUFtQjtRQUU5QixJQUFJLFFBQVEsR0FBRyxzQkFBWSxDQUFDLFFBQVEsQ0FBQztRQUNyQyxJQUFHLENBQUMsUUFBUSxDQUFDLHFCQUFxQixDQUFDLFFBQVEsQ0FBQztZQUN4QyxPQUFPO1FBRVgsSUFBSSxDQUFDLFNBQVMsQ0FBQyxPQUFPLEdBQUcsS0FBSyxDQUFDO0lBQ25DLENBQUM7SUFDRCxhQUFhLENBQUMsUUFBbUI7UUFFN0IsSUFBSSxRQUFRLEdBQUcsc0JBQVksQ0FBQyxRQUFRLENBQUM7UUFDckMsSUFBRyxDQUFDLFFBQVEsQ0FBQyxxQkFBcUIsQ0FBQyxRQUFRLENBQUM7WUFDeEMsT0FBTztRQUVYLElBQUksQ0FBQyxTQUFTLENBQUMsT0FBTyxHQUFHLElBQUksQ0FBQztJQUNsQyxDQUFDO0NBQ0o7QUF2QkQsZ0NBdUJDIn0=","assetPath":"Assets/Scripts/NPC_SpriteDel.ts","manifest":{"properties":[],"name":"NPC_SpriteDel","description":""},"isCompiled":true}'
+  typescriptHash: 374e9a6637545d8fd726557351114960
+  onlyWriteTrigger: 0

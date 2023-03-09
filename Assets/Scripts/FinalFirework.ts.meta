@@ -1,0 +1,32 @@
+fileFormatVersion: 2
+guid: 0caf576d30b27c34db9553e0e29b6437
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst GameBaseData_1 = require(\"./Managers/GameBaseData\");\r\nclass
+    FinalFirework extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    Start()
+    {\r\n        this.fireworkObj.SetActive(false);\r\n    }\r\n    OnTriggerEnter(collider)
+    {\r\n        let baseData = GameBaseData_1.default.instance;\r\n        if (!baseData.CanITriggerActivating(collider))\r\n           
+    return;\r\n        this.fireworkObj.SetActive(true);\r\n        this.StartCoroutine(this.OffFireWork());\r\n   
+    }\r\n    *OffFireWork() {\r\n        yield new UnityEngine_1.WaitForSeconds(12);\r\n       
+    this.fireworkObj.SetActive(false);\r\n    }\r\n}\r\nexports.default = FinalFirework;\r\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiRmluYWxGaXJld29yay5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkZpbmFsRmlyZXdvcmsudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSw2Q0FBbUU7QUFDbkUsaURBQXFEO0FBQ3JELDBEQUFtRDtBQUVuRCxNQUFxQixhQUFjLFNBQVEscUNBQXFCO0lBRTVELEtBQUs7UUFFRCxJQUFJLENBQUMsV0FBVyxDQUFDLFNBQVMsQ0FBQyxLQUFLLENBQUMsQ0FBQztJQUN0QyxDQUFDO0lBRUQsY0FBYyxDQUFDLFFBQW1CO1FBRTlCLElBQUksUUFBUSxHQUFHLHNCQUFZLENBQUMsUUFBUSxDQUFDO1FBQ3JDLElBQUcsQ0FBQyxRQUFRLENBQUMscUJBQXFCLENBQUMsUUFBUSxDQUFDO1lBQ3hDLE9BQU87UUFFUCxJQUFJLENBQUMsV0FBVyxDQUFDLFNBQVMsQ0FBQyxJQUFJLENBQUMsQ0FBQztRQUNqQyxJQUFJLENBQUMsY0FBYyxDQUFDLElBQUksQ0FBQyxXQUFXLEVBQUUsQ0FBQyxDQUFDO0lBQ2hELENBQUM7SUFFTyxDQUFFLFdBQVc7UUFDakIsTUFBTSxJQUFJLDRCQUFjLENBQUMsRUFBRSxDQUFDLENBQUM7UUFDN0IsSUFBSSxDQUFDLFdBQVcsQ0FBQyxTQUFTLENBQUMsS0FBSyxDQUFDLENBQUM7SUFDdEMsQ0FBQztDQVVKO0FBOUJELGdDQThCQyJ9","assetPath":"Assets/Scripts/FinalFirework.ts","manifest":{"properties":[{"assembly":"UnityEngine.CoreModule","name":"fireworkObj","type":"UnityEngine.GameObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"FinalFirework","description":""},"isCompiled":true}'
+  typescriptHash: f590f676e0ce197cd4d9bda2b734fe7c
+  onlyWriteTrigger: 0

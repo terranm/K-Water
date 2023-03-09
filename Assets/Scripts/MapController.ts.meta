@@ -1,0 +1,78 @@
+fileFormatVersion: 2
+guid: 10c79ccaf3ed95149bf019172b794c24
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    UnityEngine_UI_1 = require(\"UnityEngine.UI\");\r\nconst ZEPETO_Character_Controller_1
+    = require(\"ZEPETO.Character.Controller\");\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    GameBaseData_1 = require(\"./Managers/GameBaseData\");\r\nconst GameManager_1
+    = require(\"./Managers/GameManager\");\r\nconst NPCController_1 = require(\"./NPCController\");\r\nclass
+    MapController extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    constructor()
+    {\r\n        super(...arguments);\r\n        this.isTracing = false;\r\n       
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Tracing Player END\r\n    }\r\n    // private waitForSeconds : WaitForSeconds;\r\n   
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Property END\r\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Setting\r\n    Awake() {\r\n        // console.log(\"MapCtrl Awake\");\r\n       
+    let imgs = this.GetComponentsInChildren($typeof(UnityEngine_UI_1.Image));\r\n       
+    this.icon_NPCs = new Array();\r\n        this.npcQuestTarget = new Array();\r\n       
+    for (let img of imgs) {\r\n            switch (img.tag) {\r\n               
+    case \"Icons\":\r\n                    if (img.name.includes(\"Player\"))\r\n                       
+    this.icon_player = img;\r\n                    else if (img.name.includes(\"NPC\"))\r\n                       
+    this.icon_NPCs.push(img);\r\n                    img.GetComponent($typeof(UnityEngine_1.RectTransform)).anchoredPosition
+    = new UnityEngine_1.Vector2(2000, 0);\r\n                    break;\r\n               
+    case \"MapQuestTarget\":\r\n                    this.npcQuestTarget.push(img);\r\n                   
+    img.gameObject.SetActive(false);\r\n                    break;\r\n           
+    }\r\n        }\r\n        this.npcMap = new Map();\r\n    }\r\n    Start() {\r\n       
+    // this.waitForSeconds = GameBaseData.instance.WaitForSecond_1;\r\n    }\r\n   
+    NPCSet() {\r\n        let npcs = this.NPCs.GetComponentsInChildren($typeof(NPCController_1.default));\r\n       
+    for (let i = 0; i < npcs.length; i++) {\r\n            this.icon_NPCs[i].gameObject.SetActive(true);\r\n           
+    let rect = this.icon_NPCs[i].GetComponent($typeof(UnityEngine_1.RectTransform));\r\n           
+    rect.anchoredPosition = GameBaseData_1.default.instance.ParseVectorWorldToMap(npcs[i].transform.position);\r\n           
+    this.npcMap.set(npcs[i].name, this.icon_NPCs[i].gameObject);\r\n        }\r\n   
+    }\r\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Setting END\r\n    NPCTrace(npcName) {\r\n        this.npcMap.get(npcName).SetActive(false);\r\n       
+    // let npcs = this.NPCs.GetComponentsInChildren<NPCController>();\r\n       
+    // this.IconReset();\r\n        // let baseData = GameBaseData.instance;\r\n       
+    // for(let i=0; i<npcs.length; i++)\r\n        // {\r\n        //     this.icon_NPCs[i].gameObject.SetActive(true);\r\n       
+    //     let rect = this.icon_NPCs[i].GetComponent<RectTransform>();\r\n       
+    //     rect.anchoredPosition = baseData.ParseVectorWorldToMap(npcs[i].transform.position);\r\n       
+    // }\r\n    }\r\n    IconOnOff(isOn) {\r\n        if (this.icon_NPCs.length <=
+    0)\r\n            return;\r\n        this.icon_NPCs.forEach((icon) => {\r\n           
+    icon.gameObject.SetActive(isOn);\r\n        });\r\n    }\r\n    ActiveNPCQuestTarget(str)
+    {\r\n        this.npcQuestTarget.forEach((tar) => {\r\n            if (tar.name.includes(str))\r\n               
+    tar.gameObject.SetActive(true);\r\n        });\r\n    }\r\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public Coroutine\r\n    StartTracingPlayer() {\r\n        this.StartCoroutine(this.TracingPlayer());\r\n   
+    }\r\n    StopTracingPlayer() {\r\n        this.isTracing = false;\r\n       
+    this.StopCoroutine(this.TracingPlayer());\r\n    }\r\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public Coroutine END\r\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Tracing Player\r\n    *TracingPlayer() {\r\n        if (this.isTracing)\r\n           
+    return;\r\n        this.isTracing = true;\r\n        // if (GameManager.instance.questState
+    > 0){\r\n        //     this.NPCTrace();\r\n        // }\r\n        if (this.player
+    == null)\r\n            this.player = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.transform;\r\n       
+    let baseData = GameBaseData_1.default.instance;\r\n        let waitForSeconds
+    = new UnityEngine_1.WaitForSeconds(0.01);\r\n        while (this.isTracing) {\r\n           
+    let rect = this.icon_player.GetComponent($typeof(UnityEngine_1.RectTransform));\r\n           
+    rect.anchoredPosition = baseData.ParseVectorWorldToMap(this.player.position);\r\n           
+    yield waitForSeconds; //GameBaseData.instance.WaitForSecond_1;//\r\n        }\r\n       
+    this.isTracing = false;\r\n    }\r\n}\r\nexports.default = MapController;\r\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTWFwQ29udHJvbGxlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIk1hcENvbnRyb2xsZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSw2Q0FBNEc7QUFDNUcsbURBQXVDO0FBQ3ZDLDZFQUE0RDtBQUM1RCxpREFBcUQ7QUFDckQsMERBQW1EO0FBQ25ELHdEQUFpRDtBQUNqRCxtREFBNEM7QUFFNUMsTUFBcUIsYUFBYyxTQUFRLHFDQUFxQjtJQUFoRTs7UUFZWSxjQUFTLEdBQVcsS0FBSyxDQUFDO1FBK0dsQyw2SEFBNkg7SUFDakksQ0FBQztJQTlHRywyQ0FBMkM7SUFDM0MsdUhBQXVIO0lBQ3ZILGtIQUFrSDtJQUNsSCxLQUFLO1FBRUQsZ0NBQWdDO1FBQ2hDLElBQUksSUFBSSxHQUFHLElBQUksQ0FBQyx1QkFBdUIsU0FBQyxzQkFBSyxFQUFHLENBQUM7UUFDakQsSUFBSSxDQUFDLFNBQVMsR0FBRyxJQUFJLEtBQUssRUFBUyxDQUFDO1FBQ3BDLElBQUksQ0FBQyxjQUFjLEdBQUcsSUFBSSxLQUFLLEVBQVMsQ0FBQztRQUV6QyxLQUFJLElBQUksR0FBRyxJQUFJLElBQUksRUFDbkI7WUFDSSxRQUFPLEdBQUcsQ0FBQyxHQUFHLEVBQ2Q7Z0JBQ0ksS0FBSyxPQUFPO29CQUNSLElBQUcsR0FBRyxDQUFDLElBQUksQ0FBQyxRQUFRLENBQUMsUUFBUSxDQUFDO3dCQUMxQixJQUFJLENBQUMsV0FBVyxHQUFHLEdBQUcsQ0FBQzt5QkFDdEIsSUFBRyxHQUFHLENBQUMsSUFBSSxDQUFDLFFBQVEsQ0FBQyxLQUFLLENBQUM7d0JBQzVCLElBQUksQ0FBQyxTQUFTLENBQUMsSUFBSSxDQUFDLEdBQUcsQ0FBQyxDQUFDO29CQUU3QixHQUFHLENBQUMsWUFBWSxTQUFDLDJCQUFhLEdBQUksZ0JBQWdCLEdBQUcsSUFBSSxxQkFBTyxDQUFDLElBQUksRUFBRSxDQUFDLENBQUMsQ0FBQztvQkFDMUUsTUFBTTtnQkFDVixLQUFLLGdCQUFnQjtvQkFDakIsSUFBSSxDQUFDLGNBQWMsQ0FBQyxJQUFJLENBQUMsR0FBRyxDQUFDLENBQUM7b0JBQzlCLEdBQUcsQ0FBQyxVQUFVLENBQUMsU0FBUyxDQUFDLEtBQUssQ0FBQyxDQUFDO29CQUNoQyxNQUFNO2FBQ2I7U0FDSjtRQUNELElBQUksQ0FBQyxNQUFNLEdBQUcsSUFBSSxHQUFHLEVBQXNCLENBQUM7SUFDaEQsQ0FBQztJQUVELEtBQUs7UUFHRCwrREFBK0Q7SUFDbkUsQ0FBQztJQUVNLE1BQU07UUFDVCxJQUFJLElBQUksR0FBRyxJQUFJLENBQUMsSUFBSSxDQUFDLHVCQUF1QixTQUFDLHVCQUFhLEVBQUcsQ0FBQztRQUM5RCxLQUFJLElBQUksQ0FBQyxHQUFDLENBQUMsRUFBRSxDQUFDLEdBQUMsSUFBSSxDQUFDLE1BQU0sRUFBRSxDQUFDLEVBQUUsRUFDL0I7WUFDSSxJQUFJLENBQUMsU0FBUyxDQUFDLENBQUMsQ0FBQyxDQUFDLFVBQVUsQ0FBQyxTQUFTLENBQUMsSUFBSSxDQUFDLENBQUM7WUFDN0MsSUFBSSxJQUFJLEdBQUcsSUFBSSxDQUFDLFNBQVMsQ0FBQyxDQUFDLENBQUMsQ0FBQyxZQUFZLFNBQUMsMkJBQWEsRUFBRyxDQUFDO1lBQzNELElBQUksQ0FBQyxnQkFBZ0IsR0FBRyxzQkFBWSxDQUFDLFFBQVEsQ0FBQyxxQkFBcUIsQ0FBQyxJQUFJLENBQUMsQ0FBQyxDQUFDLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxDQUFDO1lBQ2hHLElBQUksQ0FBQyxNQUFNLENBQUMsR0FBRyxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUMsQ0FBQyxJQUFJLEVBQUUsSUFBSSxDQUFDLFNBQVMsQ0FBQyxDQUFDLENBQUMsQ0FBQyxVQUFVLENBQUMsQ0FBQztTQUMvRDtJQUVMLENBQUM7SUFDRCxzSEFBc0g7SUFDL0csUUFBUSxDQUFDLE9BQWM7UUFDMUIsSUFBSSxDQUFDLE1BQU0sQ0FBQyxHQUFHLENBQUMsT0FBTyxDQUFDLENBQUMsU0FBUyxDQUFDLEtBQUssQ0FBQyxDQUFDO1FBQzFDLGlFQUFpRTtRQUNqRSxvQkFBb0I7UUFDcEIsd0NBQXdDO1FBQ3hDLG1DQUFtQztRQUNuQyxJQUFJO1FBQ0osb0RBQW9EO1FBQ3BELGtFQUFrRTtRQUNsRSwwRkFBMEY7UUFDMUYsSUFBSTtJQUNSLENBQUM7SUFDTSxTQUFTLENBQUMsSUFBYztRQUMzQixJQUFJLElBQUksQ0FBQyxTQUFTLENBQUMsTUFBTSxJQUFJLENBQUM7WUFBRSxPQUFPO1FBQ3ZDLElBQUksQ0FBQyxTQUFTLENBQUMsT0FBTyxDQUFDLENBQUMsSUFBSSxFQUFDLEVBQUU7WUFDM0IsSUFBSSxDQUFDLFVBQVUsQ0FBQyxTQUFTLENBQUMsSUFBSSxDQUFDLENBQUM7UUFDcEMsQ0FBQyxDQUFDLENBQUM7SUFFUCxDQUFDO0lBQ00sb0JBQW9CLENBQUMsR0FBVTtRQUNsQyxJQUFJLENBQUMsY0FBYyxDQUFDLE9BQU8sQ0FBQyxDQUFDLEdBQUcsRUFBQyxFQUFFO1lBQy9CLElBQUksR0FBRyxDQUFDLElBQUksQ0FBQyxRQUFRLENBQUMsR0FBRyxDQUFDO2dCQUN0QixHQUFHLENBQUMsVUFBVSxDQUFDLFNBQVMsQ0FBQyxJQUFJLENBQUMsQ0FBQztRQUN2QyxDQUFDLENBQUMsQ0FBQztJQUNQLENBQUM7SUFDRCwySEFBMkg7SUFDcEgsa0JBQWtCO1FBRXJCLElBQUksQ0FBQyxjQUFjLENBQUMsSUFBSSxDQUFDLGFBQWEsRUFBRSxDQUFDLENBQUM7SUFDOUMsQ0FBQztJQUNNLGlCQUFpQjtRQUVwQixJQUFJLENBQUMsU0FBUyxHQUFHLEtBQUssQ0FBQztRQUN2QixJQUFJLENBQUMsYUFBYSxDQUFDLElBQUksQ0FBQyxhQUFhLEVBQUUsQ0FBQyxDQUFDO0lBQzdDLENBQUM7SUFDRCwrSEFBK0g7SUFDL0gseUhBQXlIO0lBQ2pILENBQUUsYUFBYTtRQUVuQixJQUFHLElBQUksQ0FBQyxTQUFTO1lBQ2IsT0FBTztRQUNYLElBQUksQ0FBQyxTQUFTLEdBQUcsSUFBSSxDQUFDO1FBRXRCLDRDQUE0QztRQUM1Qyx1QkFBdUI7UUFDdkIsSUFBSTtRQUVKLElBQUcsSUFBSSxDQUFDLE1BQU0sSUFBSSxJQUFJO1lBQ2xCLElBQUksQ0FBQyxNQUFNLEdBQUcsMkNBQWEsQ0FBQyxRQUFRLENBQUMsV0FBVyxDQUFDLFlBQVksQ0FBQyxTQUFTLENBQUMsU0FBUyxDQUFDO1FBRXRGLElBQUksUUFBUSxHQUFHLHNCQUFZLENBQUMsUUFBUSxDQUFDO1FBQ3JDLElBQUksY0FBYyxHQUFHLElBQUksNEJBQWMsQ0FBQyxJQUFJLENBQUMsQ0FBQztRQUM5QyxPQUFNLElBQUksQ0FBQyxTQUFTLEVBQ3BCO1lBQ0ksSUFBSSxJQUFJLEdBQUcsSUFBSSxDQUFDLFdBQVcsQ0FBQyxZQUFZLFNBQUMsMkJBQWEsRUFBRyxDQUFDO1lBQzFELElBQUksQ0FBQyxnQkFBZ0IsR0FBRyxRQUFRLENBQUMscUJBQXFCLENBQUMsSUFBSSxDQUFDLE1BQU0sQ0FBQyxRQUFRLENBQUMsQ0FBQztZQUM3RSxNQUFNLGNBQWMsQ0FBQyxDQUFBLDBDQUEwQztTQUNsRTtRQUNELElBQUksQ0FBQyxTQUFTLEdBQUcsS0FBSyxDQUFDO0lBQzNCLENBQUM7Q0FFSjtBQTVIRCxnQ0E0SEMifQ==","assetPath":"Assets/Scripts/MapController.ts","manifest":{"properties":[{"assembly":"UnityEngine.CoreModule","name":"NPCs","type":"UnityEngine.GameObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"MapController","description":""},"isCompiled":true}'
+  typescriptHash: dce62743ac844af82d86db88fda345f7
+  onlyWriteTrigger: 0

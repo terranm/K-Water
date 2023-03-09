@@ -1,0 +1,59 @@
+fileFormatVersion: 2
+guid: da221efc9ade83a40b73348e8fbbc870
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Character_Controller_1 = require(\"ZEPETO.Character.Controller\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst GameManager_1 = require(\"./GameManager\");\r\nclass
+    CameraManager extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    constructor()
+    {\r\n        super(...arguments);\r\n        this.test = 0;\r\n        this.isSetting
+    = false;\r\n    }\r\n    static get instance() { return CameraManager._instance;
+    }\r\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Property END\r\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Setting\r\n    Start() {\r\n        CameraManager._instance = this;\r\n       
+    this.layer_btn = 1 << UnityEngine_1.LayerMask.NameToLayer(\"Button\");\r\n   
+    }\r\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Setting END\r\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Raycast\r\n    Update() {\r\n        // if (this.multiplay.Room != null && this.multiplay.Room.IsConnected)\r\n       
+    // {\r\n        //     const hasPlayer = ZepetoPlayers.instance.HasPlayer(this.multiplay.Room.SessionId);\r\n       
+    //     if (hasPlayer)\r\n        //     {\r\n        this.Raycasting();\r\n       
+    this.Culling();\r\n        //     }\r\n        // }\r\n    }\r\n    Raycasting()
+    {\r\n        if (UnityEngine_1.Input.GetMouseButtonDown(0)) {\r\n           
+    let ray = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.ZepetoCamera.camera.ScreenPointToRay(UnityEngine_1.Input.mousePosition);\r\n           
+    let hitInfo = $ref();\r\n            let isHit = UnityEngine_1.Physics.Raycast(ray,
+    hitInfo, 20, this.layer_btn);\r\n            if (isHit) {\r\n               
+    GameManager_1.default.instance.SwitchButtonScript(hitInfo.value.transform);\r\n           
+    }\r\n        }\r\n    }\r\n    Culling() {\r\n        if (this.multiplay.Room
+    != null && this.multiplay.Room.IsConnected) {\r\n            const hasPlayer
+    = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.HasPlayer(this.multiplay.Room.SessionId);\r\n           
+    if (hasPlayer) {\r\n                if (this.isSetting == false) {\r\n                   
+    try {\r\n                        this.charcterObj1 = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.transform.GetChild(0).GetChild(0).gameObject;\r\n                       
+    this.charcterObj2 = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.transform.GetChild(0).GetChild(1).gameObject;\r\n                       
+    this.cameraObj = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoCamera.cameraParent.transform.GetChild(0).gameObject;\r\n                       
+    this.isSetting = true;\r\n                    }\r\n                    catch
+    (error) {\r\n                        console.log(error);\r\n                       
+    this.isSetting = false;\r\n                    }\r\n                }\r\n               
+    if (this.cameraObj.transform.localPosition.z > -0.5) {\r\n                   
+    this.charcterObj1.SetActive(false);\r\n                    this.charcterObj2.SetActive(false);\r\n               
+    }\r\n                else {\r\n                    this.charcterObj1.SetActive(true);\r\n                   
+    this.charcterObj2.SetActive(true);\r\n                }\r\n            }\r\n       
+    }\r\n    }\r\n}\r\nexports.default = CameraManager;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ2FtZXJhTWFuYWdlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkNhbWVyYU1hbmFnZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSw2Q0FBc0Y7QUFDdEYsNkVBQTREO0FBRTVELGlEQUFxRDtBQUVyRCwrQ0FBd0M7QUFFeEMsTUFBcUIsYUFBYyxTQUFRLHFDQUFxQjtJQUFoRTs7UUFrQ1ksU0FBSSxHQUFVLENBQUMsQ0FBQztRQW9CaEIsY0FBUyxHQUFhLEtBQUssQ0FBQztJQStCeEMsQ0FBQztJQWpGVSxNQUFNLEtBQUssUUFBUSxLQUFvQixPQUFPLGFBQWEsQ0FBQyxTQUFTLENBQUMsQ0FBQyxDQUFDO0lBSy9FLHVIQUF1SDtJQUN2SCxrSEFBa0g7SUFDbEgsS0FBSztRQUVELGFBQWEsQ0FBQyxTQUFTLEdBQUcsSUFBSSxDQUFDO1FBRS9CLElBQUksQ0FBQyxTQUFTLEdBQUcsQ0FBQyxJQUFJLHVCQUFTLENBQUMsV0FBVyxDQUFDLFFBQVEsQ0FBQyxDQUFDO0lBRzFELENBQUM7SUFDRCxzSEFBc0g7SUFDdEgsa0hBQWtIO0lBQ2xILE1BQU07UUFFRixzRUFBc0U7UUFDdEUsSUFBSTtRQUNKLHlGQUF5RjtRQUN6RixxQkFBcUI7UUFDckIsUUFBUTtRQUNBLElBQUksQ0FBQyxVQUFVLEVBQUUsQ0FBQztRQUNsQixJQUFJLENBQUMsT0FBTyxFQUFFLENBQUM7UUFDdkIsUUFBUTtRQUNSLElBQUk7SUFDUixDQUFDO0lBR0QsVUFBVTtRQUVOLElBQUcsbUJBQUssQ0FBQyxrQkFBa0IsQ0FBQyxDQUFDLENBQUMsRUFDOUI7WUFFSSxJQUFJLEdBQUcsR0FBRywyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxZQUFZLENBQUMsTUFBTSxDQUFDLGdCQUFnQixDQUFDLG1CQUFLLENBQUMsYUFBYSxDQUFDLENBQUM7WUFDM0YsSUFBSSxPQUFPLEdBQUcsSUFBSSxFQUFjLENBQUM7WUFDakMsSUFBSSxLQUFLLEdBQUcscUJBQU8sQ0FBQyxPQUFPLENBQUMsR0FBRyxFQUFFLE9BQU8sRUFBRSxFQUFFLEVBQUUsSUFBSSxDQUFDLFNBQVMsQ0FBQyxDQUFBO1lBQzdELElBQUcsS0FBSyxFQUNSO2dCQUNJLHFCQUFXLENBQUMsUUFBUSxDQUFDLGtCQUFrQixDQUFDLE9BQU8sQ0FBQyxLQUFLLENBQUMsU0FBUyxDQUFDLENBQUE7YUFDbkU7U0FDSjtJQUNMLENBQUM7SUFRRCxPQUFPO1FBQ0gsSUFBSSxJQUFJLENBQUMsU0FBUyxDQUFDLElBQUksSUFBSSxJQUFJLElBQUksSUFBSSxDQUFDLFNBQVMsQ0FBQyxJQUFJLENBQUMsV0FBVyxFQUNsRTtZQUNJLE1BQU0sU0FBUyxHQUFHLDJDQUFhLENBQUMsUUFBUSxDQUFDLFNBQVMsQ0FBQyxJQUFJLENBQUMsU0FBUyxDQUFDLElBQUksQ0FBQyxTQUFTLENBQUMsQ0FBQztZQUNsRixJQUFJLFNBQVMsRUFDYjtnQkFDSSxJQUFJLElBQUksQ0FBQyxTQUFTLElBQUksS0FBSyxFQUFFO29CQUN6QixJQUFJO3dCQUNBLElBQUksQ0FBQyxZQUFZLEdBQUcsMkNBQWEsQ0FBQyxRQUFRLENBQUMsV0FBVyxDQUFDLFlBQVksQ0FBQyxTQUFTLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUMsVUFBVSxDQUFDO3dCQUMzSCxJQUFJLENBQUMsWUFBWSxHQUFHLDJDQUFhLENBQUMsUUFBUSxDQUFDLFdBQVcsQ0FBQyxZQUFZLENBQUMsU0FBUyxDQUFDLFNBQVMsQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQyxDQUFDLFVBQVUsQ0FBQTt3QkFDMUgsSUFBSSxDQUFDLFNBQVMsR0FBRywyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxXQUFXLENBQUMsWUFBWSxDQUFDLFlBQVksQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQyxDQUFDLFVBQVUsQ0FBQzt3QkFDL0csSUFBSSxDQUFDLFNBQVMsR0FBRyxJQUFJLENBQUM7cUJBQ3pCO29CQUFDLE9BQU8sS0FBSyxFQUFFO3dCQUNaLE9BQU8sQ0FBQyxHQUFHLENBQUMsS0FBSyxDQUFDLENBQUE7d0JBQ2xCLElBQUksQ0FBQyxTQUFTLEdBQUcsS0FBSyxDQUFDO3FCQUMxQjtpQkFDSjtnQkFFRCxJQUFJLElBQUksQ0FBQyxTQUFTLENBQUMsU0FBUyxDQUFDLGFBQWEsQ0FBQyxDQUFDLEdBQUcsQ0FBQyxHQUFHLEVBQUM7b0JBQ2hELElBQUksQ0FBQyxZQUFZLENBQUMsU0FBUyxDQUFDLEtBQUssQ0FBQyxDQUFDO29CQUNuQyxJQUFJLENBQUMsWUFBWSxDQUFDLFNBQVMsQ0FBQyxLQUFLLENBQUMsQ0FBQztpQkFDdEM7cUJBQUk7b0JBQ0QsSUFBSSxDQUFDLFlBQVksQ0FBQyxTQUFTLENBQUMsSUFBSSxDQUFDLENBQUM7b0JBQ2xDLElBQUksQ0FBQyxZQUFZLENBQUMsU0FBUyxDQUFDLElBQUksQ0FBQyxDQUFDO2lCQUNyQzthQUNKO1NBQ0o7SUFFTCxDQUFDO0NBQ0o7QUFyRkQsZ0NBcUZDIn0=","assetPath":"Assets/Scripts/Managers/CameraManager.ts","manifest":{"properties":[{"assembly":"ZEPETO.World","name":"multiplay","type":"ZEPETO.World.ZepetoWorldMultiplay","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"CameraManager","description":""},"isCompiled":true}'
+  typescriptHash: 013cc657725667c930ccce2f1940672a
+  onlyWriteTrigger: 0

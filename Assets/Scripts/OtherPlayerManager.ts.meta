@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: 3c6620ec2c433cf41b751cf7233fc616
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst
+    ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nclass OtherPlayerManager
+    extends ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    Start() {\\r\\n       
+    this.tag = \\\"OtherPlayer\\\"; // \\\"OtherPlayer\\\" tag \uCD94\uAC00\\r\\n   
+    }\\r\\n}\\r\\nexports.default = OtherPlayerManager;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiT3RoZXJQbGF5ZXJNYW5hZ2VyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiT3RoZXJQbGF5ZXJNYW5hZ2VyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQXdDO0FBQ3hDLGlEQUFxRDtBQUVyRCxNQUFxQixrQkFBbUIsU0FBUSxxQ0FBcUI7SUFJakUsS0FBSztRQUVELElBQUksQ0FBQyxHQUFHLEdBQUcsYUFBYSxDQUFDLENBQW1FLHVCQUF1QjtJQUN2SCxDQUFDO0NBRUo7QUFURCxxQ0FTQyJ9\",\"assetPath\":\"Assets/Scripts/OtherPlayerManager.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"\",\"name\":\"npcsPoint\",\"type\":\"Array\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"OtherPlayerManager\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: 14812c23ad82f6af7ead224ff8475990
+  onlyWriteTrigger: 0

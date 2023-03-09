@@ -1,0 +1,57 @@
+fileFormatVersion: 2
+guid: 55c4611ed7a210e4eaf989a521d5ab7b
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst
+    ZEPETO_Character_Controller_1 = require(\\\"ZEPETO.Character.Controller\\\");\\r\\nconst
+    ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst GameBaseData_1 =
+    require(\\\"./Managers/GameBaseData\\\");\\r\\nclass DroneController extends
+    ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    Start() {\\r\\n        this.anim
+    = this.GetComponentInChildren($typeof(UnityEngine_1.Animator));\\r\\n    }\\r\\n   
+    OnTriggerEnter(collider) {\\r\\n        let baseData = GameBaseData_1.default.instance;\\r\\n       
+    if (!baseData.CanITriggerActivating(collider))\\r\\n            return;\\r\\n       
+    if (this.anim == null)\\r\\n            return;\\r\\n        console.log(\\\"drone1\\\");\\r\\n       
+    this.StartCoroutine(this.OnCharacterMove(collider.transform));\\r\\n        if
+    (!this.isMoving) // coroutine \uC791\uB3D9 \uD655\uC778\\r\\n            this.StartCoroutine(this.StartMoveAnimation(collider.transform,
+    true));\\r\\n    }\\r\\n    *StartMoveAnimation(character, localPlayer) {\\r\\n       
+    yield new UnityEngine_1.WaitForSeconds(0.3);\\r\\n        if (this.isMoving)\\r\\n           
+    return;\\r\\n        this.isMoving = true;\\r\\n        character.SetParent(this.anim.transform);\\r\\n       
+    character.gameObject.GetComponent($typeof(UnityEngine_1.CharacterController)).enabled
+    = false;\\r\\n        this.anim.SetBool(\\\"IsPlay\\\", true);\\r\\n        this.anim.SetTrigger(\\\"Flight\\\");\\r\\n       
+    yield new UnityEngine_1.WaitForSeconds(0.5);\\r\\n        while (!this.anim.GetCurrentAnimatorStateInfo(0).IsName(\\\"Idle\\\"))
+    {\\r\\n            yield new UnityEngine_1.WaitForSeconds(0.5);\\r\\n           
+    if (this.anim.GetCurrentAnimatorStateInfo(0).IsName(\\\"Recycle\\\"))\\r\\n               
+    break;\\r\\n        }\\r\\n        character.SetParent(null);\\r\\n        this.StopCoroutine(this.OnCharacterMove(character));\\r\\n       
+    this.anim.gameObject.SetActive(false);\\r\\n        character.gameObject.GetComponent($typeof(UnityEngine_1.CharacterController)).enabled
+    = true;\\r\\n        yield new UnityEngine_1.WaitForSeconds(0.1); //GameBaseData.instance.WaitForSecond_01;\\r\\n       
+    this.anim.gameObject.SetActive(true);\\r\\n        this.anim.SetBool(\\\"IsPlay\\\",
+    false);\\r\\n        this.isMoving = false; // coroutine \uC885\uB8CC\\r\\n   
+    }\\r\\n    *OnCharacterMove(character) {\\r\\n        let zepetoCharacter = character.gameObject.GetComponent($typeof(ZEPETO_Character_Controller_1.ZepetoCharacter));\\r\\n       
+    while (true) {\\r\\n            yield null;\\r\\n            if (zepetoCharacter.CurrentState
+    != ZEPETO_Character_Controller_1.CharacterState.Idle)\\r\\n                character.GetComponent($typeof(UnityEngine_1.CharacterController)).enabled
+    = true;\\r\\n            else\\r\\n                character.GetComponent($typeof(UnityEngine_1.CharacterController)).enabled
+    = false;\\r\\n            let distance = UnityEngine_1.Vector3.Distance(character.position,
+    this.anim.transform.position);\\r\\n            if (distance > 3) {\\r\\n               
+    character.SetParent(null);\\r\\n                character.gameObject.GetComponent($typeof(UnityEngine_1.CharacterController)).enabled
+    = true;\\r\\n                this.StopCoroutine(this.OnCharacterMove(character));\\r\\n               
+    break;\\r\\n            }\\r\\n        }\\r\\n    }\\r\\n}\\r\\nexports.default
+    = DroneController;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiRHJvbmVDb250cm9sbGVyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiRHJvbmVDb250cm9sbGVyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQTBHO0FBQzFHLDZFQUE2RjtBQUM3RixpREFBcUQ7QUFDckQsMERBQW1EO0FBRW5ELE1BQXFCLGVBQWdCLFNBQVEscUNBQXFCO0lBSTlELEtBQUs7UUFFRCxJQUFJLENBQUMsSUFBSSxHQUFHLElBQUksQ0FBQyxzQkFBc0IsU0FBQyxzQkFBUSxFQUFHLENBQUM7SUFDeEQsQ0FBQztJQUVELGNBQWMsQ0FBQyxRQUFrQjtRQUU3QixJQUFJLFFBQVEsR0FBRyxzQkFBWSxDQUFDLFFBQVEsQ0FBQztRQUNyQyxJQUFHLENBQUMsUUFBUSxDQUFDLHFCQUFxQixDQUFDLFFBQVEsQ0FBQztZQUN4QyxPQUFPO1FBRVgsSUFBRyxJQUFJLENBQUMsSUFBSSxJQUFJLElBQUk7WUFDaEIsT0FBTztRQUNYLE9BQU8sQ0FBQyxHQUFHLENBQUMsUUFBUSxDQUFDLENBQUM7UUFDdEIsSUFBSSxDQUFDLGNBQWMsQ0FBQyxJQUFJLENBQUMsZUFBZSxDQUFDLFFBQVEsQ0FBQyxTQUFTLENBQUMsQ0FBQyxDQUFDO1FBRTlELElBQUcsQ0FBQyxJQUFJLENBQUMsUUFBUSxFQUFxRixrQkFBa0I7WUFDcEgsSUFBSSxDQUFDLGNBQWMsQ0FBQyxJQUFJLENBQUMsa0JBQWtCLENBQUMsUUFBUSxDQUFDLFNBQVMsRUFBRSxJQUFJLENBQUMsQ0FBQyxDQUFDO0lBQy9FLENBQUM7SUFFTyxDQUFFLGtCQUFrQixDQUFDLFNBQW9CLEVBQUUsV0FBbUI7UUFFbEUsTUFBTSxJQUFJLDRCQUFjLENBQUMsR0FBRyxDQUFDLENBQUM7UUFDOUIsSUFBRyxJQUFJLENBQUMsUUFBUTtZQUNaLE9BQU87UUFDWCxJQUFJLENBQUMsUUFBUSxHQUFHLElBQUksQ0FBQztRQUVyQixTQUFTLENBQUMsU0FBUyxDQUFDLElBQUksQ0FBQyxJQUFJ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\",\"assetPath\":\"Assets/Scripts/DroneController.ts\",\"manifest\":{\"properties\":[],\"name\":\"DroneController\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: fea06a9d0450976bbe9156169f1ed7ed
+  onlyWriteTrigger: 0

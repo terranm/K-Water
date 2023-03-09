@@ -1,0 +1,56 @@
+fileFormatVersion: 2
+guid: 26a9d3b76dfb0914b801ca93ced9dd5f
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst
+    ZEPETO_Character_Controller_1 = require(\\\"ZEPETO.Character.Controller\\\");\\r\\nconst
+    ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst GameBaseData_1 =
+    require(\\\"./Managers/GameBaseData\\\");\\r\\nconst UIManager_1 = require(\\\"./Managers/UIManager\\\");\\r\\nconst
+    ClientStarter_1 = require(\\\"./Multiplay/ClientStarter\\\");\\r\\nclass PortalTeleport
+    extends ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    // private waitForSeconds
+    : WaitForSeconds;\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Property END\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Setting\\r\\n    Start() {\\r\\n        // this.waitForSeconds =  new WaitForSeconds(0.75);
+    //GameBaseData.instance.WaitForSecond_075;\\r\\n    }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Setting END\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Trigger\\r\\n    OnTriggerEnter(collider) {\\r\\n        let baseData = GameBaseData_1.default.instance;\\r\\n       
+    if (!baseData.CanITriggerActivating(collider))\\r\\n            return;\\r\\n       
+    if (!this.isPlaying) // coroutine \uD655\uC778\\r\\n            this.StartCoroutine(this.TeleportActivate(collider));\\r\\n   
+    }\\r\\n    OnTriggerExit(collider) {\\r\\n        let baseData = GameBaseData_1.default.instance;\\r\\n       
+    if (!baseData.CanITriggerActivating(collider))\\r\\n            return;\\r\\n       
+    this.StopCoroutine(this.TeleportActivate(collider));\\r\\n    }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Trigger END\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Teleport\\r\\n    *TeleportActivate(collider) {\\r\\n        if (this.isPlaying)
+    // coroutine \uCD5C\uC885\uD655\uC778\\r\\n            return;\\r\\n        this.isPlaying
+    = true;\\r\\n        ClientStarter_1.default.instance.isCoroutinePlaying = true;\\r\\n       
+    let zepetoCharacter = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character;\\r\\n       
+    let fadeManager = UIManager_1.default.instance;\\r\\n        ZEPETO_Character_Controller_1.ZepetoPlayers.instance.controllerData.inputAsset.Disable();\\r\\n       
+    zepetoCharacter.gameObject.GetComponent($typeof(UnityEngine_1.CharacterController)).enabled
+    = false;\\r\\n        zepetoCharacter.StopMoving(); // \uC6C0\uC9C1\uC784 \uBD09\uC1C4\\r\\n       
+    zepetoCharacter.Teleport(this.targetPoint.transform.position, zepetoCharacter.transform.rotation);
+    // teleport\\r\\n        fadeManager.PlayLoading(); // Loading\\r\\n        yield
+    new UnityEngine_1.WaitForSeconds(0.75); //this.waitForSeconds; // GameBaseData.instance.WaitForSecond_075;//\\r\\n       
+    zepetoCharacter.gameObject.GetComponent($typeof(UnityEngine_1.CharacterController)).enabled
+    = true;\\r\\n        ZEPETO_Character_Controller_1.ZepetoPlayers.instance.controllerData.inputAsset.Enable();\\r\\n       
+    fadeManager.StopLoading(); // Loading\\r\\n        this.isPlaying = false; //
+    recycle\\r\\n        ClientStarter_1.default.instance.isCoroutinePlaying = false;\\r\\n   
+    }\\r\\n}\\r\\nexports.default = PortalTeleport;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUG9ydGFsVGVsZXBvcnQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJQb3J0YWxUZWxlcG9ydC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLDZDQUF3RjtBQUN4Riw2RUFBNEQ7QUFDNUQsaURBQXFEO0FBQ3JELDBEQUFtRDtBQUNuRCxvREFBNkM7QUFDN0MsNkRBQXNEO0FBRXRELE1BQXFCLGNBQWUsU0FBUSxxQ0FBcUI7SUFNN0QsMkNBQTJDO0lBQzNDLHVIQUF1SDtJQUN2SCxrSEFBa0g7SUFDbEgsS0FBSztRQUVELDhGQUE4RjtJQUNsRyxDQUFDO0lBQ0Qsc0hBQXNIO0lBQ3RILGtIQUFrSDtJQUNsSCxjQUFjLENBQUMsUUFBbUI7UUFFOUIsSUFBSSxRQUFRLEdBQUcsc0JBQVksQ0FBQyxRQUFRLENBQUM7UUFDckMsSUFBRyxDQUFDLFFBQVEsQ0FBQyxxQkFBcUIsQ0FBQyxRQUFRLENBQUM7WUFDeEMsT0FBTztRQUVYLElBQUcsQ0FBQyxJQUFJLENBQUMsU0FBUyxFQUFxRixlQUFlO1lBQ2xILElBQUksQ0FBQyxjQUFjLENBQUMsSUFBSSxDQUFDLGdCQUFnQixDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUM7SUFDN0QsQ0FBQztJQUVELGFBQWEsQ0FBQyxRQUFtQjtRQUU3QixJQUFJLFFBQVEsR0FBRyxzQkFBWSxDQUFDLFFBQVEsQ0FBQztRQUNyQyxJQUFHLENBQUMsUUFBUSxDQUFDLHFCQUFxQixDQUFDLFFBQVEsQ0FBQztZQUN4QyxPQUFPO1FBRVgsSUFBSSxDQUFDLGFBQWEsQ0FBQyxJQUFJLENBQUMsZ0JBQWdCLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQztJQUN4RCxDQUFDO0lBQ0Qsc0hBQXNIO0lBQ3RILG1IQUFtSDtJQUMzRyxDQUFFLGdCQUFnQixDQUFDLFFBQW1CO1FBRTFDLElBQUcsSUFBSSxDQUFDLFNBQVMsRUFBc0YsaUJBQWlCO1lBQ3BILE9BQU87UUFFWCxJQUFJLENBQUMsU0FBUyxHQUFHLElBQUksQ0FBQztRQUN0Qix1QkFBYSxDQUFDLFFBQVEsQ0FBQyxrQkFBa0IsR0FBRyxJQUFJLENBQUM7UUFHakQsSUFBSSxlQUFlLEdBQUcsMkNBQWEsQ0FBQyxRQUFRLENBQUMsV0FBVyxDQUFDLFlBQVksQ0FBQyxTQUFTLENBQUM7UUFDaEYsSUFBSSxXQUFXLEdBQUcsbUJBQVMsQ0FBQyxRQUFRLENBQUM7UUFFckMsMkNBQWEsQ0FBQyxRQUFRLENBQUMsY0FBYyxDQUFDLFVBQVUsQ0FBQyxPQUFPLEVBQUUsQ0FBQztRQUMzRCxlQUFlLENBQUMsVUFBVSxDQUFDLFlBQVksU0FBQyxpQ0FBbUIsR0FBSSxPQUFPLEdBQUcsS0FBSyxDQUFDO1FBQy9FLGVBQWUsQ0FBQyxVQUFVLEVBQUUsQ0FBQyxDQUEwRSxTQUFTO1FBQ2hILGVBQWUsQ0FBQyxRQUFRLENBQUMsSUFBSSxDQUFDLFdBQVcsQ0FBQyxTQUFTLENBQUMsUUFBUSxFQUFFLGVBQWUsQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBSyxXQUFXO1FBRWxILFdBQVcsQ0FBQyxXQUFXLEVBQUUsQ0FBQyxDQUFpRCxVQUFVO1FBRXJGLE1BQU0sSUFBSSw0QkFBYyxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUEsb0VBQW9FO1FBRW5HLGVBQWUsQ0FBQyxVQUFVLENBQUMsWUFBWSxTQUFDLGlDQUFtQixHQUFJLE9BQU8sR0FBRyxJQUFJLENBQUM7UUFDOUUsMkNBQWEsQ0FBQyxRQUFRLENBQUMsY0FBYyxDQUFDLFVBQVUsQ0FBQyxNQUFNLEVBQUUsQ0FBQztRQUUxRCxXQUFXLENBQUMsV0FBVyxFQUFFLENBQUMsQ0FBaUQsVUFBVTtRQUVyRixJQUFJLENBQUMsU0FBUyxHQUFHLEtBQUssQ0FBQyxDQUFnRixVQUFVO1FBQ2pILHVCQUFhLENBQUMsUUFBUSxDQUFDLGtCQUFrQixHQUFHLEtBQUssQ0FBQztJQUN0RCxDQUFDO0NBR0o7QUFsRUQsaUNBa0VDIn0=\",\"assetPath\":\"Assets/Scripts/PortalTeleport.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"targetPoint\",\"type\":\"UnityEngine.GameObject\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"SerializeField\",\"args\":[]}]}],\"name\":\"PortalTeleport\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: 91a8023f407d9b30c5163543af865282
+  onlyWriteTrigger: 0

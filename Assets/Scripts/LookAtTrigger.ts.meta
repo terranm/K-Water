@@ -1,0 +1,34 @@
+fileFormatVersion: 2
+guid: 0f5a6080ea73f6a4d9a8aa5d6818f83b
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst LookAt_1 = require(\"./LookAt\");\r\nconst
+    GameBaseData_1 = require(\"./Managers/GameBaseData\");\r\nclass LookAtTrigger
+    extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    Start() {\r\n        this.lookAt
+    = this.transform.GetComponentInChildren($typeof(LookAt_1.default));\r\n    }\r\n   
+    OnTriggerEnter(collider) {\r\n        let baseData = GameBaseData_1.default.instance;\r\n       
+    if (!baseData.CanITriggerActivating(collider))\r\n            return;\r\n       
+    this.lookAt.StartLooking(collider);\r\n    }\r\n    OnTriggerExit(collider) {\r\n       
+    let baseData = GameBaseData_1.default.instance;\r\n        if (!baseData.CanITriggerActivating(collider))\r\n           
+    return;\r\n        this.lookAt.StopLooking(collider);\r\n    }\r\n}\r\nexports.default
+    = LookAtTrigger;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTG9va0F0VHJpZ2dlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkxvb2tBdFRyaWdnZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSw2Q0FBbUQ7QUFFbkQsaURBQXFEO0FBQ3JELHFDQUE4QjtBQUM5QiwwREFBbUQ7QUFFbkQsTUFBcUIsYUFBYyxTQUFRLHFDQUFxQjtJQUk1RCxLQUFLO1FBRUQsSUFBSSxDQUFDLE1BQU0sR0FBRyxJQUFJLENBQUMsU0FBUyxDQUFDLHNCQUFzQixTQUFDLGdCQUFNLEVBQUcsQ0FBQztJQUNsRSxDQUFDO0lBRUQsY0FBYyxDQUFDLFFBQW1CO1FBRTlCLElBQUksUUFBUSxHQUFHLHNCQUFZLENBQUMsUUFBUSxDQUFDO1FBQ3JDLElBQUcsQ0FBQyxRQUFRLENBQUMscUJBQXFCLENBQUMsUUFBUSxDQUFDO1lBQ3hDLE9BQU87UUFFWCxJQUFJLENBQUMsTUFBTSxDQUFDLFlBQVksQ0FBQyxRQUFRLENBQUMsQ0FBQztJQUN2QyxDQUFDO0lBQ0QsYUFBYSxDQUFDLFFBQW1CO1FBRTdCLElBQUksUUFBUSxHQUFHLHNCQUFZLENBQUMsUUFBUSxDQUFDO1FBQ3JDLElBQUcsQ0FBQyxRQUFRLENBQUMscUJBQXFCLENBQUMsUUFBUSxDQUFDO1lBQ3hDLE9BQU87UUFFWCxJQUFJLENBQUMsTUFBTSxDQUFDLFdBQVcsQ0FBQyxRQUFRLENBQUMsQ0FBQztJQUN0QyxDQUFDO0NBQ0o7QUF6QkQsZ0NBeUJDIn0=","assetPath":"Assets/Scripts/LookAtTrigger.ts","manifest":{"properties":[],"name":"LookAtTrigger","description":""},"isCompiled":true}'
+  typescriptHash: ede9a0c974d7e64638a93405177969ad
+  onlyWriteTrigger: 0

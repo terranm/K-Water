@@ -1,0 +1,76 @@
+fileFormatVersion: 2
+guid: 52c90dffeb279244799918fa36ca32ce
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst __UnityEngine__ = require(\\\"UnityEngine\\\");\\r\\nconst
+    UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst ZEPETO_Character_Controller_1
+    = require(\\\"ZEPETO.Character.Controller\\\");\\r\\nclass GameBaseData {\\r\\n   
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Singleton\\r\\n    constructor() {\\r\\n        //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Singleton END\\r\\n        //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Property\\r\\n        this.walkSpeed = 3;\\r\\n        this.runSpeed = 5;\\r\\n       
+    this.jumpPower = 14;\\r\\n        this.walkSpeedMax = 4;\\r\\n        this.runSpeedMax
+    = 8;\\r\\n        this.jumpPowerMax = 20;\\r\\n    }\\r\\n    static get instance()
+    {\\r\\n        if (this._instance == null)\\r\\n            this._instance =
+    new GameBaseData();\\r\\n        return this._instance;\\r\\n    }\\r\\n    Awake()
+    {\\r\\n        this.WaitForSecond_2 = new UnityEngine_1.WaitForSeconds(2);\\r\\n       
+    this.WaitForSecond_1 = new UnityEngine_1.WaitForSeconds(1);\\r\\n        this.WaitForSecond_075
+    = new UnityEngine_1.WaitForSeconds(0.75);\\r\\n        this.WaitForSecond_05
+    = new UnityEngine_1.WaitForSeconds(0.5);\\r\\n        this.WaitForSecond_01 =
+    new UnityEngine_1.WaitForSeconds(0.1);\\r\\n        this.WaitForSecond_003 =
+    new UnityEngine_1.WaitForSeconds(0.03);\\r\\n        this.WaitForSecond_001 =
+    new UnityEngine_1.WaitForSeconds(0.01);\\r\\n        this.WaitForFixed_Update
+    = new UnityEngine_1.WaitForFixedUpdate();\\r\\n    }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Get Player Partition Position\\r\\n    GetHeadTransform(sessionId) {\\r\\n       
+    return ZEPETO_Character_Controller_1.ZepetoPlayers.instance.GetPlayer(sessionId).character.transform\\r\\n           
+    .GetChild(0).GetChild(1).GetChild(2).GetChild(0).GetChild(1).GetChild(1).GetChild(0);\\r\\n   
+    }\\r\\n    GetLeftHandTransform(sessionId) {\\r\\n        return ZEPETO_Character_Controller_1.ZepetoPlayers.instance.GetPlayer(sessionId).character.transform\\r\\n           
+    .GetChild(0).GetChild(1).GetChild(2).GetChild(0).GetChild(1).GetChild(2).GetChild(1).GetChild(1).GetChild(0).GetChild(1).GetChild(0);\\r\\n   
+    }\\r\\n    GetRightHandTransform(sessionId) {\\r\\n        return ZEPETO_Character_Controller_1.ZepetoPlayers.instance.GetPlayer(sessionId).character.transform\\r\\n           
+    .GetChild(0).GetChild(1).GetChild(2).GetChild(0).GetChild(1).GetChild(3).GetChild(1).GetChild(1).GetChild(0).GetChild(1).GetChild(0);\\r\\n   
+    }\\r\\n    GetNoseTransform(character) {\\r\\n        return character.GetChild(0).GetChild(1).GetChild(2).GetChild(0).GetChild(1).GetChild(1).GetChild(0).transform;\\r\\n   
+    }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Get Player Partition Position END\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Player Partitions Vector\\r\\n    GetLeftHandPosCatched() { return new UnityEngine_1.Vector3(-0.07,
+    -0.05, 0); }\\r\\n    GetRightHandPosCatched() { return new UnityEngine_1.Vector3(0.07,
+    0.05, 0); }\\r\\n    GetMiddleSmallSize() { return new UnityEngine_1.Vector3(0.5,
+    0.5, 0.5); }\\r\\n    GetVerySmallSize() { return new UnityEngine_1.Vector3(0.1,
+    0.1, 0.1); }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Player Partitions Vector END\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Recycle Method\\r\\n    ///////////////////////////////////////////////////////
+    Get Map Item\\r\\n    GetMapsItem(key, map) {\\r\\n        if (map.has(key))\\r\\n           
+    return map.get(key);\\r\\n        else\\r\\n            return null;\\r\\n   
+    }\\r\\n    /////////////////////////////////////////////////////// ZepetoVector3
+    to Vector3\\r\\n    ParseVector3(vector3) {\\r\\n        return new UnityEngine_1.Vector3(vector3.x,
+    vector3.y, vector3.z);\\r\\n    }\\r\\n    ///////////////////////////////////////////////////////
+    Collider is Local Player?\\r\\n    CanITriggerActivating(collider) {\\r\\n       
+    if (ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer == null)\\r\\n           
+    return;\\r\\n        if (collider.tag != \\\"Player\\\") // tag \uD655\uC778\\r\\n           
+    return false;\\r\\n        const character = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.gameObject;
+    // localPlayer \uC791\uB3D9 \uD655\uC778\\r\\n        if (__UnityEngine__.GameObject.op_Inequality(collider.gameObject,
+    character))\\r\\n            return false;\\r\\n        return true;\\r\\n   
+    }\\r\\n    /////////////////////////////////////////////////////// Vector3 to
+    Vector2\\r\\n    ParseVectorWorldToMap(world) {\\r\\n        // map x -340 ~
+    290 315 +25 // world z -84 ~ -219 67.5\\r\\n        // map y -340 ~ 300 320 +25
+    // world x -4.5 ~ 130.5 67.5\\r\\n        const x = (world.z + 151.5) * -5 -
+    20;\\r\\n        const y = (world.x - 63) * 5 - 20;\\r\\n        return new UnityEngine_1.Vector2(x,
+    y);\\r\\n    }\\r\\n}\\r\\nexports.default = GameBaseData;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiR2FtZUJhc2VEYXRhLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiR2FtZUJhc2VEYXRhLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztBQUFBLDZDQUF3RztBQUN4Ryw2RUFBMEU7QUFHMUUsTUFBcUIsWUFBWTtJQUU3QixvSEFBb0g7SUFDcEg7UUFRQSx3SEFBd0g7UUFDeEgsbUhBQW1IO1FBQ25HLGNBQVMsR0FBWSxDQUFDLENBQUM7UUFDdkIsYUFBUSxHQUFZLENBQUMsQ0FBQztRQUN0QixjQUFTLEdBQVksRUFBRSxDQUFDO1FBQ3hCLGlCQUFZLEdBQVksQ0FBQyxDQUFDO1FBQzFCLGdCQUFXLEdBQVksQ0FBQyxDQUFDO1FBQ3pCLGlCQUFZLEdBQVksRUFBRSxDQUFDO0lBZmpCLENBQUM7SUFFcEIsTUFBTSxLQUFLLFFBQVE7UUFFdEIsSUFBRyxJQUFJLENBQUMsU0FBUyxJQUFJLElBQUk7WUFDckIsSUFBSSxDQUFDLFNBQVMsR0FBRyxJQUFJLFlBQVksRUFBRSxDQUFDO1FBQ3hDLE9BQU8sSUFBSSxDQUFDLFNBQVMsQ0FBQztJQUMxQixDQUFDO0lBb0JELEtBQUs7UUFDRCxJQUFJLENBQUMsZUFBZSxHQUFHLElBQUksNEJBQWMsQ0FBQyxDQUFDLENBQUMsQ0FBQztRQUM3QyxJQUFJLENBQUMsZUFBZSxHQUFHLElBQUksNEJBQWMsQ0FBQyxDQUFDLENBQUMsQ0FBQztRQUM3QyxJQUFJLENBQUMsaUJBQWlCLEdBQUcsSUFBSSw0QkFBYyxDQUFDLElBQUksQ0FBQyxDQUFDO1FBQ2xELElBQUksQ0FBQyxnQkFBZ0IsR0FBRyxJQUFJLDRCQUFjLENBQUMsR0FBRyxDQUFDLENBQUM7UUFDaEQsSUFBSSxDQUFDLGdCQUFnQixHQUFHLElBQUksNEJBQWMsQ0FBQyxHQUFHLENBQUMsQ0FBQztRQUNoRCxJQUFJLENBQUMsaUJBQWlCLEdBQUcsSUFBSSw0QkFBYyxDQUFDLElBQUksQ0FBQyxDQUFDO1FBQ2xELElBQUksQ0FBQyxpQkFBaUIsR0FBRyxJ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\",\"assetPath\":\"Assets/Scripts/Managers/GameBaseData.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"mscorlib\",\"name\":\"walkSpeed\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[\"3\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"runSpeed\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[\"5\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"jumpPower\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[\"14\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"walkSpeedMax\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[\"4\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"runSpeedMax\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[\"8\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"jumpPowerMax\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[\"20\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"WaitForSecond_2\",\"type\":\"UnityEngine.WaitForSeconds\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"WaitForSecond_1\",\"type\":\"UnityEngine.WaitForSeconds\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"WaitForSecond_075\",\"type\":\"UnityEngine.WaitForSeconds\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"WaitForSecond_05\",\"type\":\"UnityEngine.WaitForSeconds\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"WaitForSecond_01\",\"type\":\"UnityEngine.WaitForSeconds\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"WaitForSecond_003\",\"type\":\"UnityEngine.WaitForSeconds\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"WaitForSecond_001\",\"type\":\"UnityEngine.WaitForSeconds\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"WaitForFixed_Update\",\"type\":\"UnityEngine.WaitForFixedUpdate\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"GameBaseData\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: 7bdf0f9cbc2d5935d6b61b93ee0d3676
+  onlyWriteTrigger: 0

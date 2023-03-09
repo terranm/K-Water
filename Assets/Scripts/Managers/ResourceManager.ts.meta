@@ -1,0 +1,58 @@
+fileFormatVersion: 2
+guid: 32604db267e6a10418220f15d777129a
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nclass
+    ResourceManager {\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Singleton\\r\\n    constructor() {\\r\\n        //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Singleton END\\r\\n        this.instancePool = new Map();\\r\\n    }\\r\\n   
+    static get instance() {\\r\\n        if (this._instance == null)\\r\\n           
+    this._instance = new ResourceManager();\\r\\n        return this._instance;\\r\\n   
+    }\\r\\n    Load(path) {\\r\\n        return UnityEngine_1.Resources.Load(path);\\r\\n   
+    }\\r\\n    Instantiate(path, parent = null) {\\r\\n        let prefab = this.Load(`Prefabs/${path}`);\\r\\n       
+    if (prefab == null) {\\r\\n            console.error(`Failed to load prefab ${path}`);\\r\\n           
+    return null;\\r\\n        }\\r\\n        if (parent == null)\\r\\n           
+    return UnityEngine_1.Object.Instantiate(prefab);\\r\\n        return UnityEngine_1.Object.Instantiate(prefab,
+    parent);\\r\\n    }\\r\\n    Destroy(go) {\\r\\n        if (go == null)\\r\\n           
+    return null;\\r\\n        go.transform.SetParent(null);\\r\\n        UnityEngine_1.Object.Destroy(go);\\r\\n   
+    }\\r\\n    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Instace Pool\\r\\n    MakeGameObjectInPool(path) {\\r\\n        let prefab =
+    this.Load(`Prefabs/${path}`); // prefab Load\\r\\n        if (!this.instancePool.has(path))
+    // pool\uC774 \uC5C6\uB2E4\uBA74 \uC0DD\uC131\\r\\n         {\\r\\n           
+    let arr = new Array();\\r\\n            const poolSize = 4;\\r\\n           
+    for (let i = 0; i < poolSize; i++) {\\r\\n                let instant = UnityEngine_1.Object.Instantiate(prefab,
+    new UnityEngine_1.Vector3(0, -20, 0), UnityEngine_1.Quaternion.identity);\\r\\n               
+    instant.SetActive(false);\\r\\n                arr.push(instant);\\r\\n           
+    }\\r\\n            this.instancePool.set(path, arr);\\r\\n        }\\r\\n   
+    }\\r\\n    GetGameObjectInPool(path, parent = null) {\\r\\n        this.MakeGameObjectInPool(path);\\r\\n       
+    if (this.instancePool.get(path) == null || this.instancePool.get(path)[0] ==
+    null) // \uCD5C\uC885 \uCCB4\uD06C\\r\\n         {\\r\\n            console.log(`Failed
+    to load prefab ${path}`);\\r\\n            return null;\\r\\n        }\\r\\n       
+    const go = this.instancePool.get(path)[0]; // pool\uC5D0\uC11C \uC81C\uAC70 \uD6C4
+    Return\\r\\n        go.transform.SetParent(parent);\\r\\n        this.instancePool.get(path).splice(0,
+    1);\\r\\n        this.instancePool.get(path).push(go); // pool\uC5D0 \uC7AC\uB4F1\uB85D\\r\\n       
+    go.SetActive(true);\\r\\n        return go;\\r\\n    }\\r\\n    ReturnGameObjectInPool(path,
+    go) {\\r\\n        if (!this.instancePool.has(path)) {\\r\\n            console.error(`\uC774
+    \uAC8C\uC784\uC624\uBE0C\uC81D\uD2B8\uB294 Pool\uC774 \uC5C6\uB2E4`);\\r\\n           
+    return;\\r\\n        }\\r\\n        go.transform.SetParent(null);\\r\\n       
+    go.transform.position = new UnityEngine_1.Vector3(0, -20, 0);\\r\\n        go.SetActive(false);\\r\\n   
+    }\\r\\n}\\r\\nexports.default = ResourceManager;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUmVzb3VyY2VNYW5hZ2VyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiUmVzb3VyY2VNYW5hZ2VyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQTJGO0FBRTNGLE1BQXFCLGVBQWU7SUFFaEMsb0hBQW9IO0lBQ3BIO1FBUUEsd0hBQXdIO1FBRWhILGlCQUFZLEdBQThCLElBQUksR0FBRyxFQUF3QixDQUFDO0lBVnhELENBQUM7SUFFcEIsTUFBTSxLQUFLLFFBQVE7UUFFdEIsSUFBRyxJQUFJLENBQUMsU0FBUyxJQUFJLElBQUk7WUFDckIsSUFBSSxDQUFDLFNBQVMsR0FBRyxJQUFJLGVBQWUsRUFBRSxDQUFDO1FBQzNDLE9BQU8sSUFBSSxDQUFDLFNBQVMsQ0FBQztJQUMxQixDQUFDO0lBSU0sSUFBSSxDQUFtQixJQUFXO1FBQ3JDLE9BQU8sdUJBQVMsQ0FBQyxJQUFJLENBQUksSUFBSSxDQUFDLENBQUM7SUFDbkMsQ0FBQztJQUVNLFdBQVcsQ0FBQyxJQUFXLEVBQUUsU0FBbUIsSUFBSTtRQUNuRCxJQUFJLE1BQU0sR0FBRyxJQUFJLENBQUMsSUFBSSxDQUFhLFdBQVcsSUFBSSxFQUFFLENBQUMsQ0FBQztRQUV0RCxJQUFHLE1BQU0sSUFBSSxJQUFJLEVBQUM7WUFDZCxPQUFPLENBQUMsS0FBSyxDQUFDLHlCQUF5QixJQUFJLEVBQUUsQ0FBQyxDQUFDO1lBQy9DLE9BQU8sSUFBSSxDQUFDO1NBQ2Y7UUFDRCxJQUFHLE1BQU0sSUFBSSxJQUFJO1lBQ2IsT0FBTyxvQkFBTSxDQUFDLFdBQVcsQ0FBQyxNQUFNLENBQWUsQ0FBQztRQUVwRCxPQUFPLG9CQUFNLENBQUMsV0FBVyxDQUFDLE1BQU0sRUFBRSxNQUFNLENBQWUsQ0FBQztJQUM1RCxDQUFDO0lBRU0sT0FBTyxDQUFDLEVBQWE7UUFDeEIsSUFBRyxFQUFFLElBQUksSUFBSTtZQUNULE9BQU8sSUFBSSxDQUFDO1FBRWhCLEVBQUUsQ0FBQyxTQUFTLENBQUMsU0FBUyxDQUFD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\",\"assetPath\":\"Assets/Scripts/Managers/ResourceManager.ts\",\"manifest\":{\"properties\":[],\"name\":\"ResourceManager\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: 9b140009d16864ad787fbe4aaad0d788
+  onlyWriteTrigger: 0

@@ -1,0 +1,55 @@
+fileFormatVersion: 2
+guid: bdae8de72b3182c4b9d68a1d9d50fd42
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nclass NPCSpaceMove extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\r\n    // private RotY :number = 0;\r\n    // private PosY :number = 0;\r\n   
+    // private isPos :boolean = false;\r\n    // private pos :number = this.transform.position.y;\r\n   
+    Start() {\r\n        this.gameObject.SetActive(false);\r\n    }\r\n    SpaceOn()
+    {\r\n        this.gameObject.SetActive(true);\r\n        this.StartCoroutine(this.Move());\r\n   
+    }\r\n    // Update(){\r\n    //     // yield new WaitForFixedUpdate();\r\n   
+    //     this.RotY += Time.deltaTime;\r\n    //     if (this.RotY > 360) {\r\n   
+    //         this.RotY = 0;\r\n    //     }\r\n    //     this.transform.localRotation
+    = Quaternion.Euler(new Vector3(0,this.RotY,0));\r\n    //     let time = 0;\r\n   
+    //     if (this.isPos){\r\n    //         time = Time.deltaTime;\r\n    //    
+    }\r\n    //     else {\r\n    //         time = -Time.deltaTime;\r\n    //    
+    }\r\n    //     this.PosY += time;\r\n    //     if (this.PosY > 5){\r\n    //        
+    this.isPos = false;\r\n    //         this.PosY = 5;\r\n    //     }\r\n    //    
+    else if (this.PosY < -5){\r\n    //         this.isPos = true;\r\n    //        
+    this.PosY = -5\r\n    //     }\r\n    //     // console.log(\"PosY\",PosY);\r\n   
+    //     this.transform.position = new Vector3(this.transform.position.x,this.pos
+    + this.PosY,this.transform.position.z);\r\n    // }\r\n    *Move() {\r\n       
+    let RotY = 0;\r\n        let PosY = 0;\r\n        let isPos = false;\r\n       
+    let pos = this.transform.position.y;\r\n        while (true) {\r\n           
+    yield new UnityEngine_1.WaitForFixedUpdate();\r\n            RotY += UnityEngine_1.Time.deltaTime;\r\n           
+    if (RotY > 360) {\r\n                RotY = 0;\r\n            }\r\n           
+    this.transform.localRotation = UnityEngine_1.Quaternion.Euler(new UnityEngine_1.Vector3(0,
+    RotY, 0));\r\n            let time = 0;\r\n            if (isPos) {\r\n               
+    time = UnityEngine_1.Time.deltaTime;\r\n            }\r\n            else {\r\n               
+    time = -UnityEngine_1.Time.deltaTime;\r\n            }\r\n            PosY +=
+    time;\r\n            if (PosY > 5) {\r\n                isPos = false;\r\n               
+    PosY = 5;\r\n            }\r\n            else if (PosY < -5) {\r\n               
+    isPos = true;\r\n                PosY = -5;\r\n            }\r\n            //
+    console.log(\"PosY\",PosY);\r\n            this.transform.position = new UnityEngine_1.Vector3(this.transform.position.x,
+    pos + PosY, this.transform.position.z);\r\n        }\r\n    }\r\n}\r\nexports.default
+    = NPCSpaceMove;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTlBDU3BhY2VNb3ZlLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiTlBDU3BhY2VNb3ZlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQTJFO0FBQzNFLGlEQUFxRDtBQUVyRCxNQUFxQixZQUFhLFNBQVEscUNBQXFCO0lBQzNELDRCQUE0QjtJQUM1Qiw0QkFBNEI7SUFDNUIsa0NBQWtDO0lBQ2xDLG1EQUFtRDtJQUVuRCxLQUFLO1FBQ0QsSUFBSSxDQUFDLFVBQVUsQ0FBQyxTQUFTLENBQUMsS0FBSyxDQUFDLENBQUM7SUFDckMsQ0FBQztJQUVNLE9BQU87UUFDVixJQUFJLENBQUMsVUFBVSxDQUFDLFNBQVMsQ0FBQyxJQUFJLENBQUMsQ0FBQztRQUNoQyxJQUFJLENBQUMsY0FBYyxDQUFDLElBQUksQ0FBQyxJQUFJLEVBQUUsQ0FBQyxDQUFDO0lBQ3JDLENBQUM7SUFFRCxZQUFZO0lBQ1oseUNBQXlDO0lBQ3pDLG1DQUFtQztJQUNuQyw2QkFBNkI7SUFDN0IseUJBQXlCO0lBQ3pCLFFBQVE7SUFDUixtRkFBbUY7SUFFbkYsb0JBQW9CO0lBQ3BCLHVCQUF1QjtJQUN2QixpQ0FBaUM7SUFDakMsUUFBUTtJQUNSLGFBQWE7SUFDYixrQ0FBa0M7SUFDbEMsUUFBUTtJQUNSLHlCQUF5QjtJQUN6QiwwQkFBMEI7SUFDMUIsOEJBQThCO0lBQzlCLHlCQUF5QjtJQUN6QixRQUFRO0lBQ1IsZ0NBQWdDO0lBQ2hDLDZCQUE2QjtJQUM3Qix5QkFBeUI7SUFDekIsUUFBUTtJQUNSLG1DQUFtQztJQUNuQyx1SEFBdUg7SUFDdkgsSUFBSTtJQUVJLENBQUUsSUFBSTtRQUNWLElBQUksSUFBSSxHQUFHLENBQUMsQ0FBQztRQUNiLElBQUksSUFBSSxHQUFHLENBQUMsQ0FBQztRQUNiLElBQUksS0FBSyxHQUFHLEtBQUssQ0FBQztRQUNsQixJQUFJLEdBQUcsR0FBRyxJQUFJLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUM7UUFDcEMsT0FBTSxJQUFJLEVBQUM7WUFDUCxNQUFNLElBQUksZ0NBQWtCLEVBQUUsQ0FBQztZQUMvQixJQUFJLElBQUksa0JBQUksQ0FBQyxTQUFTLENBQUM7WUFDdkIsSUFBSSxJQUFJLEdBQUcsR0FBRyxFQUFFO2dCQUNaLElBQUksR0FBRyxDQUFDLENBQUM7YUFDWjtZQUNELElBQUksQ0FBQyxTQUFTLENBQUMsYUFBYSxHQUFHLHdCQUFVLENBQUMsS0FBSyxDQUFDLElBQUkscUJBQU8sQ0FBQyxDQUFDLEVBQUMsSUFBSSxFQUFDLENBQUMsQ0FBQyxDQUFDLENBQUM7WUFFdkUsSUFBSSxJQUFJLEdBQUcsQ0FBQyxDQUFDO1lBQ2IsSUFBSSxLQUFLLEVBQUM7Z0JBQ04sSUFBSSxHQUFHLGtCQUFJLENBQUMsU0FBUyxDQUFDO2FBQ3pCO2lCQUNJO2dCQUNELElBQUksR0FBRyxDQUFDLGtCQUFJLENBQUMsU0FBUyxDQUFDO2FBQzFCO1lBQ0QsSUFBSSxJQUFJLElBQUksQ0FBQztZQUNiLElBQUksSUFBSSxHQUFHLENBQUMsRUFBQztnQkFDVCxLQUFLLEdBQUcsS0FBSyxDQUFDO2dCQUNkLElBQUksR0FBRyxDQUFDLENBQUM7YUFDWjtpQkFDSSxJQUFJLElBQUksR0FBRyxDQUFDLENBQUMsRUFBQztnQkFDZixLQUFLLEdBQUcsSUFBSSxDQUFDO2dCQUNiLElBQUksR0FBRyxDQUFDLENBQUMsQ0FBQTthQUNaO1lBQ0QsNEJBQTRCO1lBQzVCLElBQUksQ0FBQyxTQUFTLENBQUMsUUFBUSxHQUFHLElBQUkscUJBQU8sQ0FBQyxJQUFJLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxDQUFDLEVBQUMsR0FBRyxHQUFHLElBQUksRUFBQyxJQUFJLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQztTQUN6RztJQUNMLENBQUM7Q0FFSjtBQTdFRCwrQkE2RUMifQ==","assetPath":"Assets/Scripts/NPCSpaceMove.ts","manifest":{"properties":[],"name":"NPCSpaceMove","description":""},"isCompiled":true}'
+  typescriptHash: 18db1e94c67387260691da01610eca25
+  onlyWriteTrigger: 0

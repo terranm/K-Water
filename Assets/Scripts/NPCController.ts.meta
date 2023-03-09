@@ -1,0 +1,89 @@
+fileFormatVersion: 2
+guid: 4b72c437bbc27b0479c884c8a6e5edd7
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst
+    ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst GameBaseData_1 =
+    require(\\\"./Managers/GameBaseData\\\");\\r\\nconst ResourceManager_1 = require(\\\"./Managers/ResourceManager\\\");\\r\\nclass
+    NPCController extends ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    constructor()
+    {\\r\\n        super(...arguments);\\r\\n        this.isRocking = false;\\r\\n       
+    this.isLooking = false;\\r\\n        this._isChecked = false;\\r\\n        //
+    private CheckSP(){\\r\\n        //     let tr = this.gameObject.GetComponentsInChildren<Transform>();\\r\\n       
+    //     console.log(\\\"tr.length\\\", tr.length );\\r\\n        //     return
+    (tr.length > 2);\\r\\n        // }\\r\\n    }\\r\\n    get isChecked() { return
+    this._isChecked; }\\r\\n    set isChecked(value) { this._isChecked = value; }\\r\\n   
+    // private waitForSeconds :WaitForSeconds;\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Property END\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Setting\\r\\n    Start() {\\r\\n        this._isChecked = false;\\r\\n       
+    // console.log(this._isChecked);\\r\\n        // this.transform.GetComponentInChildren<BoxCollider>().enabled
+    = false;\\r\\n        // this.waitForSeconds = GameBaseData.instance.WaitForSecond_2;//new
+    WaitForSeconds(2);\\r\\n    }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Setting END\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Trigger\\r\\n    OnTriggerEnter(collider) {\\r\\n        let baseData = GameBaseData_1.default.instance;\\r\\n       
+    if (!baseData.CanITriggerActivating(collider))\\r\\n            return;\\r\\n       
+    if (!this.isLooking) // coroutine \uC791\uB3D9 \uD655\uC778\\r\\n           
+    this.StartCoroutine(this.StartLooking(collider.transform));\\r\\n        // this.transform.GetComponentInChildren<BoxCollider>().enabled
+    = true;\\r\\n    }\\r\\n    OnTriggerExit(collider) {\\r\\n        let baseData
+    = GameBaseData_1.default.instance;\\r\\n        if (!baseData.CanITriggerActivating(collider))\\r\\n           
+    return;\\r\\n        this.isLooking = false;\\r\\n        // this.transform.GetComponentInChildren<BoxCollider>().enabled
+    = false;\\r\\n        if (this.isLooking)\\r\\n            this.StopCoroutine(this.StartLooking(collider.transform));\\r\\n       
+    // if(this.tag == \\\"QuestTarget\\\")\\r\\n        // {\\r\\n        //    
+    // Test\\r\\n        //     this.ReturnPopupNPC();\\r\\n        // }\\r\\n   
+    }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Trigger END\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    MissionComplete\\r\\n    MissionComplete() {\\r\\n        // this.ReturnPopupNPC();\\r\\n       
+    this.gameObject.SetActive(false);\\r\\n    }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    MissionComplete END\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Looking\\r\\n    *StartLooking(player) {\\r\\n        if (this.isLooking)\\r\\n           
+    return;\\r\\n        this.isLooking = true;\\r\\n        let timer = 0.01;\\r\\n       
+    while (this.isLooking) {\\r\\n            yield new UnityEngine_1.WaitForSeconds(timer);\\r\\n           
+    let dir = UnityEngine_1.Quaternion.LookRotation(UnityEngine_1.Vector3.op_Subtraction(player.transform.position,
+    this.transform.position)).normalized;\\r\\n            dir.x = 0;\\r\\n           
+    dir.z = 0;\\r\\n            this.transform.rotation = UnityEngine_1.Quaternion.Slerp(this.transform.rotation,
+    dir, timer * 15);\\r\\n        }\\r\\n        this.StopCoroutine(this.StartLooking(player));\\r\\n   
+    }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Looking END\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    PopUp\\r\\n    // FloatingPopupNPC()\\r\\n    // {\\r\\n    //     console.log(this.pop);\\r\\n   
+    //     if(this.pop)\\r\\n    //         return;\\r\\n    //     let property
+    = this.transform.GetComponentInChildren<NPCDangerProperty>();\\r\\n    //    
+    let name = property.name;\\r\\n    //     this.pop = ResourceManager.instance.GetGameObjectInPool(\\\"Popup_NPC\\\",
+    this.transform);\\r\\n    //     this.pop.transform.localRotation = Quaternion.identity;\\r\\n   
+    //     this.pop.transform.localPosition = new Vector3(0, 2.7, 0);\\r\\n    //    
+    this.pop.name = `POP_${name}`;\\r\\n    //     let btn = this.pop.transform.GetChild(0);
+    // set Button\\r\\n    //     btn.name = `POP_${name}.Button`;\\r\\n    //    
+    let text = this.pop.transform.GetComponentsInChildren<Text>()[0];\\r\\n    //    
+    text.text = property.GetText;\\r\\n    //     console.log(` text.text : ${text.text}
+    `);\\r\\n    // }\\r\\n    // public ReturnPopupNPC()\\r\\n    // {\\r\\n   
+    //     if(this.pop == null)\\r\\n    //         return;\\r\\n    //     ResourceManager.instance.ReturnGameObjectInPool(\\\"Popup_NPC\\\",
+    this.pop);\\r\\n    //     this.pop = null;\\r\\n    // }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    PopUp END\\r\\n    FindedNPCAction() {\\r\\n        this.StartCoroutine(this.DisappearEffect());\\r\\n       
+    this.gameObject.SetActive(false);\\r\\n        // this.transform.parent.gameObject.SetActive(false);\\r\\n       
+    return this._isChecked;\\r\\n    }\\r\\n    SetEffect() {\\r\\n        // \uC0AC\uB77C\uC9C0\uB294
+    \uC774\uD399\uD2B8 \uC7AC\uC0DD\\r\\n        if (this._isChecked) {\\r\\n           
+    this.Eff = ResourceManager_1.default.instance.Instantiate(\\\"Effect_V\\\");\\r\\n       
+    }\\r\\n        else {\\r\\n            this.Eff = ResourceManager_1.default.instance.Instantiate(\\\"Effect_X\\\");\\r\\n       
+    }\\r\\n        this.Eff.transform.position = this.transform.position;\\r\\n       
+    // this.Eff.transform.SetParent(this.transform);\\r\\n        this.Eff.SetActive(false);\\r\\n   
+    }\\r\\n    *DisappearEffect() {\\r\\n        this.Eff.SetActive(true);\\r\\n       
+    yield new UnityEngine_1.WaitForSeconds(2); //GameBaseData.instance.WaitForSecond_2;\\r\\n       
+    ResourceManager_1.default.instance.Destroy(this.Eff);\\r\\n        this.StopCoroutine(this.DisappearEffect());\\r\\n   
+    }\\r\\n}\\r\\nexports.default = NPCController;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTlBDQ29udHJvbGxlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIk5QQ0NvbnRyb2xsZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSw2Q0FBNkg7QUFFN0gsaURBQXFEO0FBQ3JELDBEQUFtRDtBQUNuRCxnRUFBeUQ7QUFFekQsTUFBcUIsYUFBYyxTQUFRLHFDQUFxQjtJQUFoRTs7UUFLWSxjQUFTLEdBQVcsS0FBSyxDQUFDO1FBQzFCLGNBQVMsR0FBVyxLQUFLLENBQUM7UUFFMUIsZUFBVSxHQUFZLEtBQUssQ0FBQztRQXdJcEMscUJBQXFCO1FBQ3JCLHFFQUFxRTtRQUNyRSw0Q0FBNEM7UUFDNUMsOEJBQThCO1FBQzlCLElBQUk7SUFDUixDQUFDO0lBNUlHLElBQVcsU0FBUyxLQUFjLE9BQU8sSUFBSSxDQUFDLFVBQVUsQ0FBQyxDQUFDLENBQUM7SUFDM0QsSUFBVyxTQUFTLENBQUMsS0FBYyxJQUFJLElBQUksQ0FBQyxVQUFVLEdBQUcsS0FBSyxDQUFDLENBQUMsQ0FBQztJQUNqRSwwQ0FBMEM7SUFDMUMsdUhBQXVIO0lBQ3ZILGtIQUFrSDtJQUNsSCxLQUFLO1FBRUQsSUFBSSxDQUFDLFVBQVUsR0FBRyxLQUFLLENBQUM7UUFDeEIsZ0NBQWdDO1FBQ2hDLHdFQUF3RTtRQUN4RSx1RkFBdUY7SUFDM0YsQ0FBQztJQUNELHNIQUFzSDtJQUN0SCxrSEFBa0g7SUFDbEgsY0FBYyxDQUFDLFFBQWtCO1FBRTdCLElBQUksUUFBUSxHQUFHLHNCQUFZLENBQUMsUUFBUSxDQUFDO1FBQ3JDLElBQUcsQ0FBQyxRQUFRLENBQUMscUJBQXFCLENBQUMsUUFBUSxDQUFDO1lBQ3hDLE9BQU87UUFFWCxJQUFHLENBQUMsSUFBSSxDQUFDLFNBQVMsRUFBcUYsa0JBQWtCO1lBQ3JILElBQUksQ0FBQyxjQUFjLENBQUMsSUFBSSxDQUFDLFlBQVksQ0FBQyxRQUFRLENBQUMsU0FBUyxDQUFDLENBQUMsQ0FBQTtRQUU5RCx1RUFBdUU7SUFDM0UsQ0FB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\",\"assetPath\":\"Assets/Scripts/NPCController.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"mscorlib\",\"name\":\"_isChecked\",\"type\":\"System.Boolean\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"SerializeField\",\"args\":[]}]}],\"name\":\"NPCController\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: 8c5da418436e1a9684da9dc19f26b527
+  onlyWriteTrigger: 0

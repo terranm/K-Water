@@ -1,0 +1,109 @@
+[World Settings]
+world id             com.kwater.waterland3
+version              0.1                 
+max clients          8                   
+orientation          horizontal          
+disable invite       false               
+disable room list    false               
+disable private room false               
+
+[Build Manifest]
+[scenes]
+8 mb                 assets/scenes/k-water.unity
+[assets]
+2 kb                 assets/material/materials/glass 1.mat
+13 kb                packages/zepeto.character.controller/runtime/_resources/images/touchpad_handle_base.png
+2 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_off.anim
+157 kb               assets/res/수열관로.fbx 
+35 kb                packages/zepeto.character.controller/runtime/_resources/inputactions/zepetoinputcontrol.inputactions
+600 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/landingslight.anim
+62 kb                packages/zepeto.character.controller/runtime/_resources/animations/base/action1.anim
+7 kb                 assets/res/move/sky_cloud.prefab
+3 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_ziggle.anim
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/walk.anim
+2 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_on.anim
+137 kb               assets/material/materials/제방2.png
+2 kb                 assets/material/materials/sidewalk_block.mat
+2 kb                 assets/res/env/chungju_airport/material/cloud.mat
+2 kb                 assets/material/materials/groundshadow0.mat
+2 kb                 assets/material/materials/sk_groundtile_001 1.mat
+2 kb                 assets/res/plane.014 (1).prefab
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/jump_move.anim
+27 kb                packages/zepeto.character.controller/runtime/_resources/prefabs/uicontroller_touchpad_horizontal.prefab
+546 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/landingroll.anim
+7 kb                 packages/zepeto.character.controller/runtime/_resources/animatorcontroller/uicontrollertouchpadhandleorigin.controller
+62 kb                packages/zepeto.character.controller/runtime/_resources/animations/base/action2.anim
+43 kb                assets/material/materials/sidewalk_block.jpg
+12 mb                assets/nebula skyboxes/skybox purple nebula/textures/purplenebula2048_top.tif
+27 kb                packages/zepeto.character.controller/runtime/_resources/prefabs/uicontroller_touchpad_vertical.prefab
+132 kb               assets/res/제방용.png  
+1 kb                 packages/com.unity.inputsystem/inputsystem/editor/icons/inputsystemuiinputmodule@64.png
+112 kb               assets/res/수열관로1.fbx
+7 kb                 packages/zepeto.character.controller/runtime/_resources/animatorcontroller/uicontrollertouchpadhandle.controller
+143 kb               assets/res/env/chungju_airport/texture/summer_cloud.png
+2 kb                 assets/material/materials/zepeto_colorchart_1k.mat
+451 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/jumpdash.anim
+461 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/movewalkfast.anim
+3 kb                 packages/zepeto.character.controller/runtime/_resources/prefabs/shadow/charactershadow.prefab
+104 kb               assets/res/수열관로0.fbx
+12 kb                packages/zepeto.character.controller/runtime/_resources/images/touchpad_jump_base.png
+442 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/jumpmove.anim
+2 kb                 assets/material/materials/dike0.mat
+62 kb                packages/zepeto.character.controller/runtime/_resources/animations/base/gesture.anim
+5 mb                 packages/zepeto.character.controller/runtime/_resources/animations/gesture/6_dance.anim
+18 kb                packages/zepeto.character.controller/runtime/_resources/animatorcontroller/zepetoanimator.controller
+12 mb                assets/nebula skyboxes/skybox purple nebula/textures/purplenebula2048_back.tif
+2 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_origin_on.anim
+882 kb               assets/res/move/flower&grass.prefab
+1 kb                 assets/nebula skyboxes/skybox purple nebula/materials/skyboxpurplenebula_material.mat
+560 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/idle.anim
+12 mb                assets/nebula skyboxes/skybox purple nebula/textures/purplenebula2048_bottom.tif
+2 kb                 assets/material/materials/dike1.mat
+1 mb                 assets/res/세상을txt.fbx
+22 kb                assets/res/move/see_cloud.prefab
+1 kb                 packages/zepeto.character.controller/runtime/_resources/prefabs/shadow/fxt_blobshadow.png
+4 mb                 assets/res/[메타버즈] k-water_제페토 월드_bgm_3안_shadowing.mp3
+12 mb                assets/nebula skyboxes/skybox purple nebula/textures/purplenebula2048_left.tif
+133 kb               assets/res/ground13.fbx
+131 kb               assets/material/materials/제방용.png
+295 kb               packages/zepeto.character.controller/runtime/_resources/animatorcontroller/zepetoanimatorv2.controller
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/gesture/4_ok.anim
+374 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/moverunfast.anim
+828 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/moveturn.anim
+3 mb                 assets/material/materials/groundshadow0.tga
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/v2/landingdeep.anim
+2 kb                 assets/material/materials/cp_ground_tile_03.mat
+416 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/moverun.anim
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/jump_idle.anim
+13 kb                assets/res/object104 (1).fbx
+2 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_origin_off.anim
+12 mb                assets/nebula skyboxes/skybox purple nebula/textures/purplenebula2048_right.tif
+301 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/falling.anim
+4 kb                 assets/zepetocamera.prefab
+111 kb               assets/material/zepeto_colorchart_1k.png
+618 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/jumpidle.anim
+3 kb                 assets/res/env/chungju_airport/model/objmodel/cloudplane.mesh
+5 kb                 packages/zepeto.character.controller/runtime/_resources/images/touchpad_jump_icon.png
+5 kb                 packages/zepeto.character.controller/runtime/_resources/images/touchpad_handle_icon.png
+451 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/stamp.anim
+3 mb                 packages/zepeto.character.controller/runtime/_resources/animations/gesture/5_sleep.anim
+12 mb                assets/nebula skyboxes/skybox purple nebula/textures/purplenebula2048_front.tif
+940 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/run.anim
+470 kb               assets/material/materials/cp_ground_tile_03.png
+491 kb               assets/res/move/k-waterbuilding.prefab
+3 mb                 assets/material/materials/groundshadow1.tga
+2 kb                 assets/material/materials/groundshadow1.mat
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/v2/movewalk.anim
+2 kb                 packages/zepeto.character.controller/runtime/_resources/prefabs/shadow/fxt_blobshadow.mat
+2 kb                 packages/zepeto.character.controller/runtime/_resources/prefabs/eventsystem.prefab
+1014 kb              packages/zepeto.character.controller/runtime/_resources/animations/base/v2/idle.anim
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/fall_end.anim
+128 kb               assets/res/제방2.png  
+464 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/jumpdouble.anim
+428 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/hand_idle_01.anim
+31 kb                packages/com.unity.inputsystem/inputsystem/plugins/playerinput/defaultinputactions.inputactions
+60 kb                assets/res/watergrid-re.fbx
+3 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_origin_ziggle.anim
+[resources]
+0 b                  assets/resources    
+[streamingAssets]

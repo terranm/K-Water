@@ -1,0 +1,49 @@
+fileFormatVersion: 2
+guid: 68ac22026d50f8549b72f028aa54e96b
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Character_Controller_1 = require(\"ZEPETO.Character.Controller\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst GameBaseData_1 = require(\"./Managers/GameBaseData\");\r\nclass
+    LookAt extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    // private waitForSeconds
+    : WaitForSeconds;\r\n    Start() {\r\n        // this.waitForSeconds = GameBaseData.instance.WaitForSecond_01;\r\n       
+    let rend = $ref();\r\n        if (this.TryGetComponent($typeof(UnityEngine_1.SpriteRenderer),
+    rend)) {\r\n            this.renderer = rend.value;\r\n        }\r\n        if
+    (this.renderer)\r\n            this.renderer.enabled = false;\r\n        let
+    col = $ref();\r\n        if (this.TryGetComponent($typeof(UnityEngine_1.Collider),
+    col)) {\r\n            this.collider = col.value;\r\n        }\r\n        if
+    (this.collider)\r\n            this.collider.enabled = false;\r\n    }\r\n   
+    StartLooking(col) {\r\n        let baseData = GameBaseData_1.default.instance;\r\n       
+    if (!baseData.CanITriggerActivating(col))\r\n            return;\r\n        if
+    (this.collider)\r\n            this.collider.enabled = true;\r\n        if (this.renderer)\r\n           
+    this.renderer.enabled = true;\r\n        this.isLooking = true;\r\n        this.StartCoroutine(this.LookAtLocalPlayer());\r\n   
+    }\r\n    StopLooking(col) {\r\n        let baseData = GameBaseData_1.default.instance;\r\n       
+    if (!baseData.CanITriggerActivating(col))\r\n            return;\r\n        if
+    (this.renderer)\r\n            this.renderer.enabled = false;\r\n        if (this.collider)\r\n           
+    this.collider.enabled = false;\r\n        this.isLooking = false;\r\n       
+    this.StopCoroutine(this.LookAtLocalPlayer());\r\n    }\r\n    *LookAtLocalPlayer()
+    {\r\n        this.transform.LookAt(ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoCamera.cameraParent.GetChild(0).transform.position);\r\n       
+    let waitForSeconds = new UnityEngine_1.WaitForSeconds(0.01);\r\n        while
+    (this.isLooking) {\r\n            yield waitForSeconds; //GameBaseData.instance.WaitForSecond_01;//this.waitForSeconds//new
+    WaitForSeconds(1);//\r\n            this.transform.LookAt(ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoCamera.cameraParent.GetChild(0).transform.position);\r\n       
+    }\r\n        this.StopCoroutine(this.LookAtLocalPlayer());\r\n    }\r\n}\r\nexports.default
+    = LookAt;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTG9va0F0LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiTG9va0F0LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQW9IO0FBQ3BILDZFQUE0RDtBQUM1RCxpREFBcUQ7QUFDckQsMERBQW1EO0FBRW5ELE1BQXFCLE1BQU8sU0FBUSxxQ0FBcUI7SUFNckQsMkNBQTJDO0lBQzNDLEtBQUs7UUFFRCxnRUFBZ0U7UUFFaEUsSUFBSSxJQUFJLEdBQUcsSUFBSSxFQUFrQixDQUFDO1FBQ2xDLElBQUksSUFBSSxDQUFDLGVBQWUsU0FBQyw0QkFBYyxHQUFFLElBQUksR0FBRTtZQUMzQyxJQUFJLENBQUMsUUFBUSxHQUFHLElBQUksQ0FBQyxLQUFLLENBQUM7U0FDOUI7UUFDRCxJQUFHLElBQUksQ0FBQyxRQUFRO1lBQUUsSUFBSSxDQUFDLFFBQVEsQ0FBQyxPQUFPLEdBQUcsS0FBSyxDQUFDO1FBRWhELElBQUksR0FBRyxHQUFHLElBQUksRUFBWSxDQUFDO1FBQzNCLElBQUksSUFBSSxDQUFDLGVBQWUsU0FBQyxzQkFBUSxHQUFFLEdBQUcsR0FBRTtZQUNwQyxJQUFJLENBQUMsUUFBUSxHQUFHLEdBQUcsQ0FBQyxLQUFLLENBQUM7U0FDN0I7UUFDRCxJQUFHLElBQUksQ0FBQyxRQUFRO1lBQUUsSUFBSSxDQUFDLFFBQVEsQ0FBQyxPQUFPLEdBQUcsS0FBSyxDQUFDO0lBQ3BELENBQUM7SUFFTSxZQUFZLENBQUMsR0FBYztRQUU5QixJQUFJLFFBQVEsR0FBRyxzQkFBWSxDQUFDLFFBQVEsQ0FBQztRQUNyQyxJQUFHLENBQUMsUUFBUSxDQUFDLHFCQUFxQixDQUFDLEdBQUcsQ0FBQztZQUNuQyxPQUFPO1FBRVgsSUFBRyxJQUFJLENBQUMsUUFBUTtZQUFFLElBQUksQ0FBQyxRQUFRLENBQUMsT0FBTyxHQUFHLElBQUksQ0FBQztRQUMvQyxJQUFHLElBQUksQ0FBQyxRQUFRO1lBQUUsSUFBSSxDQUFDLFFBQVEsQ0FBQyxPQUFPLEdBQUcsSUFBSSxDQUFDO1FBQy9DLElBQUksQ0FBQyxTQUFTLEdBQUcsSUFBSSxDQUFDO1FBQ3RCLElBQUksQ0FBQyxjQUFjLENBQUMsSUFBSSxDQUFDLGlCQUFpQixFQUFFLENBQUMsQ0FBQztJQUNsRCxDQUFDO0lBRU0sV0FBVyxDQUFDLEdBQWM7UUFFN0IsSUFBSSxRQUFRLEdBQUcsc0JBQVksQ0FBQyxRQUFRLENBQUM7UUFDckMsSUFBRyxDQUFDLFFBQVEsQ0FBQyxxQkFBcUIsQ0FBQyxHQUFHLENBQUM7WUFDbkMsT0FBTztRQUVYLElBQUcsSUFBSSxDQUFDLFFBQVE7WUFBRSxJQUFJLENBQUMsUUFBUSxDQUFDLE9BQU8sR0FBRyxLQUFLLENBQUM7UUFDaEQsSUFBRyxJQUFJLENBQUMsUUFBUTtZQUFFLElBQUksQ0FBQyxRQUFRLENBQUMsT0FBTyxHQUFHLEtBQUssQ0FBQztRQUNoRCxJQUFJLENBQUMsU0FBUyxHQUFHLEtBQUssQ0FBQztRQUN2QixJQUFJLENBQUMsYUFBYSxDQUFDLElBQUksQ0FBQyxpQkFBaUIsRUFBRSxDQUFDLENBQUM7SUFDakQsQ0FBQztJQUVPLENBQUUsaUJBQWlCO1FBRXZCLElBQUksQ0FBQyxTQUFTLENBQUMsTUFBTSxDQUFDLDJDQUFhLENBQUMsUUFBUSxDQUFDLFdBQVcsQ0FBQyxZQUFZLENBQUMsWUFBWSxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFDLENBQUM7UUFDbkgsSUFBSSxjQUFjLEdBQUcsSUFBSSw0QkFBYyxDQUFDLElBQUksQ0FBQyxDQUFDO1FBQzlDLE9BQU0sSUFBSSxDQUFDLFNBQVMsRUFDcEI7WUFDSSxNQUFNLGNBQWMsQ0FBQyxDQUFBLHdGQUF3RjtZQUM3RyxJQUFJLENBQUMsU0FBUyxDQUFDLE1BQU0sQ0FBQywyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxXQUFXLENBQUMsWUFBWSxDQUFDLFlBQVksQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxDQUFDO1NBQ3RIO1FBQ0QsSUFBSSxDQUFDLGFBQWEsQ0FBQyxJQUFJLENBQUMsaUJBQWlCLEVBQUUsQ0FBQyxDQUFDO0lBQ2pELENBQUM7Q0FDSjtBQTNERCx5QkEyREMifQ==","assetPath":"Assets/Scripts/LookAt.ts","manifest":{"properties":[],"name":"LookAt","description":""},"isCompiled":true}'
+  typescriptHash: 4629b7135205b61536c2bb142ba75fee
+  onlyWriteTrigger: 0

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Elevator
+  - Fade
+  - Loading
+  - SpawnPoint
+  - TEST
+  - Quest
+  - QuestTarget
+  - POP
+  - Icons
+  - OtherPlayer
+  - NPC
+  - Eff
+  - MAP
+  - MapQuestTarget
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - Button
+  - Invisible
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Player
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Wall
+  - Ingore Camera
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

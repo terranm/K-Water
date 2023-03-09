@@ -1,0 +1,228 @@
+fileFormatVersion: 2
+guid: cf4661180b615e443af8e8b8a874140e
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst
+    UnityEngine_UI_1 = require(\\\"UnityEngine.UI\\\");\\r\\nconst ZEPETO_Script_1
+    = require(\\\"ZEPETO.Script\\\");\\r\\nconst MapController_1 = require(\\\"../MapController\\\");\\r\\nconst
+    GameBaseData_1 = require(\\\"./GameBaseData\\\");\\r\\nconst GameManager_1 =
+    require(\\\"./GameManager\\\");\\r\\nvar FadeType;\\r\\n(function (FadeType)
+    {\\r\\n    FadeType[\\\"Fallout\\\"] = \\\"UI_Fade_Black\\\";\\r\\n    FadeType[\\\"Teleport\\\"]
+    = \\\"UI_Fade_White\\\";\\r\\n    FadeType[\\\"NONE\\\"] = \\\"\\\";\\r\\n})(FadeType
+    || (FadeType = {}));\\r\\nvar LoadingType;\\r\\n(function (LoadingType) {\\r\\n   
+    LoadingType[\\\"Start\\\"] = \\\"UI_Loarding_Start\\\";\\r\\n    LoadingType[\\\"Teleport\\\"]
+    = \\\"UI_Loarding_Teleport\\\";\\r\\n    LoadingType[\\\"NONE\\\"] = \\\"\\\";\\r\\n})(LoadingType
+    || (LoadingType = {}));\\r\\n// enum PopUpType {\\r\\n//     TypeA = \\\"UI_POP_01\\\",\\r\\n//    
+    TypeB = \\\"UI_POP_02\\\",\\r\\n//     TypeC = \\\"UI_POP_03\\\",\\r\\n//    
+    TypeD = \\\"UI_POP_04\\\",\\r\\n//     TypeM = \\\"UI_MAP\\\",\\r\\n//     NONE
+    = \\\"\\\",\\r\\n// }\\r\\nclass UIManager extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\\r\\n    constructor() {\\r\\n        super(...arguments);\\r\\n        this.animTime
+    = 1.5;\\r\\n        this.start = 1;\\r\\n        this.end = 0;\\r\\n        this.questCount
+    = 0;\\r\\n        this.timerState = false;\\r\\n        //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Find GameObject END\\r\\n    }\\r\\n    static get instance() { return UIManager._instance;
+    }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Singleton END\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Property\\r\\n    get FADE_FALLOUT() { return FadeType.Fallout; }\\r\\n    get
+    FADE_TELEPORT() { return FadeType.Teleport; }\\r\\n    get FADE_NONE() { return
+    FadeType.NONE; }\\r\\n    // private waitForFixedUpdate :WaitForFixedUpdate;\\r\\n   
+    // private waitForSeconds : WaitForSeconds;\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Property END\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Setting\\r\\n    Start() {\\r\\n        UIManager._instance = this;\\r\\n       
+    if (this.canvas == null)\\r\\n            return;\\r\\n        const images =
+    this.canvas.GetComponentsInChildren($typeof(UnityEngine_UI_1.Image));\\r\\n       
+    this.fadeImages = new Array();\\r\\n        this.loadingUIs = new Array();\\r\\n       
+    this.questUIs = new Array();\\r\\n        this.popUps = new Array();\\r\\n       
+    this.EffUIs = new Array();\\r\\n        for (const img of images) {\\r\\n           
+    try {\\r\\n                switch (img.tag) {\\r\\n                    case \\\"Fade\\\":\\r\\n                       
+    this.fadeImages.push(img.gameObject);\\r\\n                        let fadeColor
+    = img.color;\\r\\n                        fadeColor.a = 0;\\r\\n                       
+    img.color = fadeColor;\\r\\n                        break;\\r\\n                   
+    case \\\"Loading\\\":\\r\\n                        this.loadingUIs.push(img.gameObject);\\r\\n                       
+    img.gameObject.SetActive(false);\\r\\n                        break;\\r\\n                   
+    case \\\"Quest\\\":\\r\\n                        this.questUIs.push(img.gameObject);\\r\\n                       
+    if (img.name.split('_')[2] == \\\"02\\\")\\r\\n                            continue;\\r\\n                       
+    const bntExitQuest = img.GetComponentsInChildren($typeof(UnityEngine_UI_1.Button));
+    // Exit Button\\r\\n                        bntExitQuest.forEach((btn) => {\\r\\n                           
+    btn.onClick.AddListener(() => {\\r\\n                                img.gameObject.SetActive(false);\\r\\n                           
+    });\\r\\n                        });\\r\\n                        img.gameObject.SetActive(false);\\r\\n                   
+    case \\\"POP\\\":\\r\\n                        this.popUps.push(img.gameObject);\\r\\n                       
+    const bntExitPOP = img.GetComponentInChildren($typeof(UnityEngine_UI_1.Button));
+    // Exit Button\\r\\n                        bntExitPOP.onClick.AddListener(()
+    => {\\r\\n                            img.gameObject.SetActive(false);\\r\\n                       
+    });\\r\\n                        if (img.name == \\\"UI_MAP\\\") {\\r\\n                           
+    bntExitPOP.onClick.AddListener(() => {\\r\\n                                const
+    mapController = img.GetComponent($typeof(MapController_1.default));\\r\\n                               
+    if (mapController)\\r\\n                                    mapController.StopTracingPlayer();\\r\\n                           
+    });\\r\\n                        }\\r\\n                        img.gameObject.SetActive(false);\\r\\n                       
+    break;\\r\\n                    case \\\"Eff\\\":\\r\\n                       
+    this.EffUIs.push(img.gameObject);\\r\\n                        img.gameObject.SetActive(false);\\r\\n                       
+    break;\\r\\n                }\\r\\n            }\\r\\n            catch (error)
+    {\\r\\n                console.error(error, img.name);\\r\\n            }\\r\\n       
+    }\\r\\n        this.questUIs[1].GetComponentsInChildren($typeof(UnityEngine_UI_1.Button)).forEach((btn)
+    => {\\r\\n            let btname = btn.name.split('_');\\r\\n            btn.onClick.AddListener(()
+    => {\\r\\n                if (btname[1] != \\\"Move\\\") {\\r\\n                   
+    GameManager_1.default.instance.QuestStart();\\r\\n                    this.questUIs[1].SetActive(false);\\r\\n               
+    }\\r\\n                else {\\r\\n                    switch (btname[2]) {\\r\\n                       
+    case \\\"Next\\\":\\r\\n                            this.questUIs[1].transform.GetChild(0).gameObject.SetActive(false);\\r\\n                           
+    this.questUIs[1].transform.GetChild(1).gameObject.SetActive(true);\\r\\n                           
+    break;\\r\\n                        case \\\"Prev\\\":\\r\\n                           
+    this.questUIs[1].transform.GetChild(1).gameObject.SetActive(false);\\r\\n                           
+    this.questUIs[1].transform.GetChild(0).gameObject.SetActive(true);\\r\\n                           
+    break;\\r\\n                    }\\r\\n                }\\r\\n            });\\r\\n       
+    });\\r\\n        this.questUIs[1].transform.GetChild(0).gameObject.SetActive(true);\\r\\n       
+    this.questUIs[1].transform.GetChild(1).gameObject.SetActive(false);\\r\\n       
+    this.questUIs[1].SetActive(false);\\r\\n        let mainUi = this.canvas.transform.GetChild(0);\\r\\n       
+    this.mapButton = mainUi.GetChild(0).GetComponent($typeof(UnityEngine_UI_1.Button));\\r\\n       
+    if (this.mapButton) {\\r\\n            this.mapButton.onClick.AddListener(()
+    => {\\r\\n                this.SetOnClickListener(this.mapButton);\\r\\n           
+    });\\r\\n            // this.mapButton.gameObject.SetActive(false);\\r\\n       
+    }\\r\\n        this.timerUI = mainUi.GetChild(1).gameObject;\\r\\n        this.timerUI.SetActive(false);\\r\\n       
+    this.questCntUI = mainUi.GetChild(2).gameObject;\\r\\n        this.questCntUI.SetActive(false);\\r\\n       
+    mainUi.GetChild(3).gameObject.SetActive(false);\\r\\n        mainUi.GetChild(4).gameObject.SetActive(false);\\r\\n       
+    // this.waitForFixedUpdate = new WaitForFixedUpdate();// GameBaseData.instance.WaitForFixed_Update;\\r\\n       
+    // this.waitForSeconds = new WaitForSeconds(1);\\r\\n        // this.timerText
+    = this.timerUI.GetComponentInChildren<Text>();\\r\\n    }\\r\\n    SetQuestCntImg(num)
+    {\\r\\n        if (num > 0) {\\r\\n            console.log(\\\"setquestimg \\\",
+    this.canvas.transform.GetChild(0).GetChild(num + 2).name);\\r\\n            this.canvas.transform.GetChild(0).GetChild(2).GetComponent($typeof(UnityEngine_UI_1.Image)).sprite
+    = this.canvas.transform.GetChild(0).GetChild(num + 2).GetComponent($typeof(UnityEngine_UI_1.Image)).sprite;\\r\\n       
+    }\\r\\n    }\\r\\n    SetOnClickListener(btn) {\\r\\n        switch (btn.name)
+    {\\r\\n            default:\\r\\n                this.ShowPopUp(\\\"UI_MAP\\\");\\r\\n               
+    break;\\r\\n        }\\r\\n    }\\r\\n    // Start()\\r\\n    // {    \\r\\n   
+    // }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Setting END\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public\\r\\n    PlayFadeInOut(type, animTime = this.animTime) {\\r\\n       
+    this.StartCoroutine(this.FadeCoroutine(type, false, animTime, true));\\r\\n   
+    }\\r\\n    PlayLoading() {\\r\\n        this.StartCoroutine(this.LoadingCoroutine());\\r\\n   
+    }\\r\\n    ShowPopUp(type) {\\r\\n        this.PopUpCoroutine(type);\\r\\n   
+    }\\r\\n    StopLoading() {\\r\\n        const loadingImage = this.loadingUIs[0];\\r\\n       
+    this.isLoading = false;\\r\\n        this.isPlaying = false;\\r\\n        this.CloseUI(loadingImage);\\r\\n   
+    }\\r\\n    PlayEff(num) {\\r\\n        this.StartCoroutine(this.EffCoroutine(num));\\r\\n   
+    }\\r\\n    ClosePopup(type) {\\r\\n        const pop = this.FindPopUpImage(type);\\r\\n       
+    this.CloseUI(pop);\\r\\n    }\\r\\n    SetTimer(state) {\\r\\n        this.timerState
+    = state;\\r\\n        this.timerUI.SetActive(true);\\r\\n        this.StopCoroutine(this.TimerCnt());\\r\\n       
+    if (this.timerState) {\\r\\n            this.StartCoroutine(this.TimerCnt());\\r\\n       
+    }\\r\\n    }\\r\\n    SetQuestCnt(state, cnt) {\\r\\n        this.questCntUI.SetActive(state);\\r\\n       
+    if (!state)\\r\\n            return;\\r\\n        let queCntTextImgs = this.questCntUI.GetComponentsInChildren($typeof(UnityEngine_UI_1.Image));\\r\\n       
+    queCntTextImgs.shift();\\r\\n        let imgNum = 0;\\r\\n        queCntTextImgs.forEach((img)
+    => {\\r\\n            img.enabled = (imgNum++ == cnt);\\r\\n        });\\r\\n   
+    }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public END\\r\\n    *TimerCnt() {\\r\\n        let timeText = this.timerUI.GetComponentInChildren($typeof(UnityEngine_UI_1.Text));\\r\\n       
+    let time = 0;\\r\\n        while (this.timerState) {\\r\\n            yield new
+    UnityEngine_1.WaitForFixedUpdate(); //GameBaseData.instance.WaitForFixed_Update;//\\r\\n           
+    time += UnityEngine_1.Time.deltaTime;\\r\\n            timeText.text = (Math.floor(time)).toString();\\r\\n       
+    }\\r\\n        this.StopCoroutine(this.TimerCnt());\\r\\n    }\\r\\n    // private
+    timerTime:number;\\r\\n    // private isTimerOn:boolean;\\r\\n    // private
+    timerText:Text;\\r\\n    // Update(){\\r\\n    //     if (this.isTimerOn){\\r\\n   
+    //         // console.log(\\\"this.timerTime\\\" + this.timerText.text);\\r\\n   
+    //         this.timerTime += Time.deltaTime;\\r\\n    //         this.timerUI.GetComponentInChildren<Text>().text
+    = (Math.floor(this.timerTime)).toString();\\r\\n    //     }\\r\\n    // }\\r\\n   
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Fade\\r\\n    *FadeCoroutine(type, isFadeIn, aniTime = this.animTime, returnSignal
+    = false) {\\r\\n        if (this.isPlaying || this.isLoading)\\r\\n           
+    return;\\r\\n        const fadeImage = this.FindFadeImage(type);\\r\\n       
+    if (fadeImage == null) {\\r\\n            console.error(` ----------------- fadeImage
+    == null & type : ${type} `);\\r\\n            return;\\r\\n        }\\r\\n       
+    this.isPlaying = true;\\r\\n        const counter = aniTime / 100000; // Timer
+    Set\\r\\n        let timer = 0;\\r\\n        let startAlpha = this.start; //
+    Default Set (Fade In)\\r\\n        let endAlpha = this.end;\\r\\n        if (!isFadeIn)
+    {\\r\\n            startAlpha = this.end; // Fade Out Set\\r\\n            endAlpha
+    = this.start;\\r\\n        }\\r\\n        // let waitForFixedUpdate = new WaitForFixedUpdate();\\r\\n       
+    while (timer < aniTime) {\\r\\n            yield GameBaseData_1.default.instance.WaitForFixed_Update;
+    //new WaitForFixedUpdate();//waitForFixedUpdate;                                                                   
+    // \uC815\uC0C1\uC801\uC73C\uB85C \uB3D9\uC791\uD558\uB294 \uAC83\uC740 \uC774\uAC83\uBFD0\\r\\n           
+    timer += UnityEngine_1.Time.deltaTime;\\r\\n            // yield new WaitForSecondsRealtime(counter);\\r\\n           
+    // timer += counter;                                                                              
+    // TEST\\r\\n            // timer += counter * 100;                                                                        
+    // PC\\r\\n            // timer += counter * 1500;                                                                       
+    // Mobile\\r\\n            let fadeColor = fadeImage.color;\\r\\n           
+    fadeColor.a = UnityEngine_1.Mathf.Lerp(startAlpha, endAlpha, timer);\\r\\n           
+    fadeImage.color = fadeColor;\\r\\n        }\\r\\n        this.isPlaying = false;\\r\\n       
+    if (returnSignal)\\r\\n            this.StartCoroutine(this.FadeCoroutine(type,
+    !isFadeIn, aniTime, false));\\r\\n    }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Fade END\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Loading\\r\\n    *LoadingCoroutine() {\\r\\n        if (this.isPlaying || this.isLoading)\\r\\n           
+    return;\\r\\n        const loadingImage = this.loadingUIs[0];\\r\\n        this.openUI
+    = loadingImage;\\r\\n        if (UnityEngine_1.GameObject.op_Equality(loadingImage,
+    null)) {\\r\\n            console.error(` ----------------- loadingImage == null`);\\r\\n           
+    return;\\r\\n        }\\r\\n        this.isPlaying = true;\\r\\n        this.isLoading
+    = true;\\r\\n        loadingImage.SetActive(true);\\r\\n        const sublodingImg
+    = loadingImage.transform.GetChild(0);\\r\\n        let y = 0;\\r\\n        let
+    isPlus = true;\\r\\n        // let waitForFixedUpdate = new WaitForFixedUpdate();\\r\\n       
+    while (this.isLoading) {\\r\\n            yield new UnityEngine_1.WaitForFixedUpdate();
+    //waitForFixedUpdate;//GameBaseData.instance.WaitForFixed_Update;//\\r\\n           
+    let move;\\r\\n            if (isPlus) {\\r\\n                move = UnityEngine_1.Time.deltaTime
+    * 50;\\r\\n            }\\r\\n            else {\\r\\n                move =
+    UnityEngine_1.Time.deltaTime * -50;\\r\\n            }\\r\\n            if (sublodingImg.localPosition.y
+    > 50) {\\r\\n                isPlus = false;\\r\\n            }\\r\\n           
+    else if (sublodingImg.localPosition.y < -50) {\\r\\n                isPlus =
+    true;\\r\\n            }\\r\\n            y += move;\\r\\n            // console.log(\\\"y
+    : \\\",y);\\r\\n            sublodingImg.localPosition = new UnityEngine_1.Vector3(0,
+    y, 0);\\r\\n        }\\r\\n    }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Loading END\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Pop Up\\r\\n    PopUpCoroutine(type) {\\r\\n        const pop = this.FindPopUpImage(type);\\r\\n       
+    if (UnityEngine_1.GameObject.op_Equality(pop, null)) {\\r\\n            console.error(`
+    ----------------- pop == null & type : ${type} `);\\r\\n            return;\\r\\n       
+    }\\r\\n        if (pop.activeSelf) {\\r\\n            this.CloseUI(pop);\\r\\n       
+    }\\r\\n        else {\\r\\n            this.openUI = pop;\\r\\n            pop.SetActive(true);\\r\\n           
+    if (pop.name == \\\"UI_MAP\\\") {\\r\\n                const mapController =
+    pop.GetComponent($typeof(MapController_1.default));\\r\\n                if (mapController)\\r\\n                   
+    mapController.StartTracingPlayer();\\r\\n            }\\r\\n        }\\r\\n   
+    }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Pop Up END\\r\\n    *EffCoroutine(num) {\\r\\n        const eff = this.EffUIs[num];\\r\\n       
+    if (UnityEngine_1.GameObject.op_Equality(eff, null)) {\\r\\n            console.error(`
+    ----------------- pop == null & type : ${num} `);\\r\\n            return;\\r\\n       
+    }\\r\\n        if (eff.activeSelf) {\\r\\n            this.CloseUI(eff);\\r\\n       
+    }\\r\\n        else {\\r\\n            this.openUI = eff;\\r\\n            let
+    x_Scale = 0;\\r\\n            let y_Scale = 0;\\r\\n            eff.transform.localScale
+    = new UnityEngine_1.Vector3(x_Scale, y_Scale, 1);\\r\\n            eff.SetActive(true);\\r\\n           
+    while (true) {\\r\\n                yield null;\\r\\n                if (x_Scale
+    > 1) {\\r\\n                    break;\\r\\n                }\\r\\n               
+    x_Scale += UnityEngine_1.Time.deltaTime;\\r\\n                y_Scale += UnityEngine_1.Time.deltaTime;\\r\\n               
+    eff.transform.localScale = new UnityEngine_1.Vector3(x_Scale, y_Scale, 1);\\r\\n           
+    }\\r\\n            yield new UnityEngine_1.WaitForSeconds(); //this.waitForSeconds
+    //GameBaseData.instance.WaitForSecond_1; //GameBaseData.instance.WaitForSecond_1;//\\r\\n           
+    this.CloseUI(eff);\\r\\n        }\\r\\n    }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Quest\\r\\n    StartQuest() {\\r\\n        if (this.questUIs.length < this.questCount)\\r\\n           
+    return;\\r\\n        // this.mapButton.gameObject.SetActive(true);\\r\\n       
+    this.questUIs[this.questCount].SetActive(true);\\r\\n        return this.questCount++;\\r\\n   
+    }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Quest END\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    UI Close\\r\\n    CloseUI(ui) {\\r\\n        if (UnityEngine_1.GameObject.op_Equality(ui,
+    null)) {\\r\\n            console.error(` ----------------- ui == null`);\\r\\n           
+    return;\\r\\n        }\\r\\n        if (ui.name == \\\"UI_MAP\\\") {\\r\\n           
+    const mapController = ui.GetComponent($typeof(MapController_1.default));\\r\\n           
+    if (mapController)\\r\\n                mapController.StopTracingPlayer();\\r\\n       
+    }\\r\\n        ui.SetActive(false);\\r\\n        this.openUI = null;\\r\\n       
+    // this.StopAllCoroutines();\\r\\n    }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    UI Close END\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Find GameObject\\r\\n    FindFadeImage(type) {\\r\\n        const typeName =
+    type;\\r\\n        for (const item of this.fadeImages) {\\r\\n            if
+    (item.name == typeName)\\r\\n                return item.GetComponent($typeof(UnityEngine_UI_1.Image));\\r\\n       
+    }\\r\\n        return null;\\r\\n    }\\r\\n    // FindLoadingImage(type:LoadingType)
+    : GameObject\\r\\n    // {\\r\\n    //     const typeName :string = type as string;\\r\\n   
+    //     for (const item of this.loadingUIs) {\\r\\n    //         if(item.name
+    == typeName)\\r\\n    //             return item;\\r\\n    //     }\\r\\n   
+    //     return null;\\r\\n    // }\\r\\n    FindPopUpImage(type) {\\r\\n       
+    // const typeName :string = type as string;\\r\\n        for (let item of this.popUps)
+    {\\r\\n            if (item.name == type)\\r\\n                return item;\\r\\n       
+    }\\r\\n        return null;\\r\\n    }\\r\\n}\\r\\nexports.default = UIManager;\\r\\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVUlNYW5hZ2VyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiVUlNYW5hZ2VyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQTJIO0FBQzNILG1EQUFxRDtBQUNyRCxpREFBc0Q7QUFDdEQsb0RBQTZDO0FBQzdDLGlEQUEwQztBQUMxQywrQ0FBd0M7QUFHeEMsSUFBSyxRQUlKO0FBSkQsV0FBSyxRQUFRO0lBQ1QscUNBQXlCLENBQUE7SUFDekIsc0NBQTBCLENBQUE7SUFDMUIscUJBQVMsQ0FBQTtBQUNiLENBQUMsRUFKSSxRQUFRLEtBQVIsUUFBUSxRQUlaO0FBQ0QsSUFBSyxXQUlKO0FBSkQsV0FBSyxXQUFXO0lBQ1osMENBQTJCLENBQUE7SUFDM0IsZ0RBQWlDLENBQUE7SUFDakMsd0JBQVMsQ0FBQTtBQUNiLENBQUMsRUFKSSxXQUFXLEtBQVgsV0FBVyxRQUlmO0FBQ0QsbUJBQW1CO0FBQ25CLDJCQUEyQjtBQUMzQiwyQkFBMkI7QUFDM0IsMkJBQTJCO0FBQzNCLDJCQUEyQjtBQUMzQix3QkFBd0I7QUFDeEIsaUJBQWlCO0FBQ2pCLElBQUk7QUFHSixNQUFxQixTQUFVLFNBQVEscUNBQXFCO0lBQTVEOztRQW9DWSxhQUFRLEdBQVksR0FBRyxDQUFDO1FBQ2YsVUFBSyxHQUFZLENBQUMsQ0FBQztRQUNuQixRQUFHLEdBQVksQ0FBQyxDQUFDO1FBSzFCLGVBQVUsR0FBVSxDQUFDLENBQUM7UUE2S3RCLGVBQVUsR0FBYSxLQUFLLENBQUM7UUF5UHJDLDhIQUE4SDtJQUNsSSxDQUFDO0lBOWNVLE1BQU0sS0FBSyxRQUFRLEtBQWdCLE9BQU8sU0FBUyxDQUFDLFNBQVMsQ0FBQyxDQUFDLENBQUM7SUFDdkUsd0hBQXdIO0lBQ3hILG1IQUFtSDtJQUNuSCxJQUFXLFlBQVksS0FBb0IsT0FBTyxRQUFRLENBQUMsT0FBTyxDQUFDLENBQUMsQ0FBQztJQUNyRSxJQUFXLGFBQWEsS0FBbUIsT0FBTyxRQUFRLENBQUMsUUFBUSxDQUFDLENB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LENBQUMsQ0FBQyxVQUFVLENBQUMsU0FBUyxDQUFDLEtBQUssQ0FBQyxDQUFDOzRCQUNuRSxJQUFJLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQyxDQUFDLFNBQVMsQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUMsVUFBVSxDQUFDLFNBQVMsQ0FBQyxJQUFJLENBQUMsQ0FBQzs0QkFDbEUsTUFBTTt3QkFDVixLQUFLLE1BQU07NEJBQ1AsSUFBSSxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQyxTQUFTLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQyxDQUFDLFVBQVUsQ0FBQyxTQUFTLENBQUMsS0FBSyxDQUFDLENBQUM7NEJBQ25FLElBQUksQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQyxVQUFVLENBQUMsU0FBUyxDQUFDLElBQUksQ0FBQyxDQUFDOzRCQUNsRSxNQUFNO3FCQUNiO2lCQUNKO1lBQ0wsQ0FBQyxDQUFDLENBQUM7UUFDUCxDQUFDLENBQUMsQ0FBQztRQUNILElBQUksQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQyxVQUFVLENBQUMsU0FBUyxDQUFDLElBQUksQ0FBQyxDQUFDO1FBQ2xFLElBQUksQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQyxVQUFVLENBQUMsU0FBUyxDQUFDLEtBQUssQ0FBQyxDQUFDO1FBQ25FLElBQUksQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUMsU0FBUyxDQUFDLEtBQUssQ0FBQyxDQUFDO1FBRWxDLElBQUksTUFBTSxHQUFHLElBQUksQ0FBQyxNQUFNLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQztRQUMvQyxJQUFJLENBQUMsU0FBUyxHQUFHLE1BQU0sQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUMsWUFB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\",\"assetPath\":\"Assets/Scripts/Managers/UIManager.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"UnityEngine.UIModule\",\"name\":\"canvas\",\"type\":\"UnityEngine.Canvas\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[{\"name\":\"SerializeField\",\"args\":[]}]}],\"name\":\"UIManager\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: 64ea4f8780a0011c0737eed9e5b73b17
+  onlyWriteTrigger: 0

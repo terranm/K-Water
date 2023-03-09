@@ -1,0 +1,179 @@
+fileFormatVersion: 2
+guid: 69c0d51a8ec106e4cb9e06e2785539c2
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst
+    ZEPETO_Character_Controller_1 = require(\\\"ZEPETO.Character.Controller\\\");\\r\\nconst
+    ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst ClientStarter_1
+    = require(\\\"../Multiplay/ClientStarter\\\");\\r\\nconst NPCController_1 = require(\\\"../NPCController\\\");\\r\\nconst
+    ZepetoAnalytics_1 = require(\\\"./ZepetoAnalytics\\\");\\r\\nconst GameBaseData_1
+    = require(\\\"./GameBaseData\\\");\\r\\nconst UIManager_1 = require(\\\"./UIManager\\\");\\r\\nconst
+    ResourceManager_1 = require(\\\"./ResourceManager\\\");\\r\\nconst MapController_1
+    = require(\\\"../MapController\\\");\\r\\nconst NPCSpaceMove_1 = require(\\\"../NPCSpaceMove\\\");\\r\\nclass
+    GameManager extends ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    constructor()
+    {\\r\\n        super(...arguments);\\r\\n        // private zepetoAnalytics :
+    ZepetoAnalytics;\\r\\n        // private npcCounter:Array<number> = new Array<number>();\\r\\n       
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Property END\\r\\n        this.questState = 0;\\r\\n        this.spNum = 0;\\r\\n       
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    NPC Quest\\r\\n        this.collectSPNPCcnt = 0;\\r\\n        // SendSitState(sit:
+    boolean)\\r\\n        // {\\r\\n        //     // this.multiplay.Room.Send(\\\"Sit\\\",
+    sit);\\r\\n        // }\\r\\n        //////////////////////////////////////////////////////////////////////////////////////////////////
+    Sit Chair END\\r\\n        //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Raycast Button END\\r\\n    }\\r\\n    static get instance() { return GameManager._instance;
+    }\\r\\n    // private waitForSeconds : WaitForSeconds;\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Setting\\r\\n    Awake() {\\r\\n    }\\r\\n    Start() {\\r\\n        GameManager._instance
+    = this;\\r\\n        this.multiplay.add_RoomCreated((room) => {\\r\\n           
+    this.room = room;\\r\\n        });\\r\\n        // this.npcSpace_obj.SetActive(false);\\r\\n       
+    // const loadingUI = UIManager.instance.FindLoadingImage(UIManager.instance.LOADING_START);\\r\\n       
+    // if(loadingUI != null)\\r\\n        // this.waitForSeconds = new WaitForSeconds(2);\\r\\n       
+    this.StartCoroutine(this.StartLoading());\\r\\n        // for(let i=0; i<3; i++)\\r\\n       
+    //     this.npcCounter.push(0); //GameBaseData.instance.WaitForSecond_2;\\r\\n       
+    // this.zepetoAnalytics = GameObject.Find(\\\"ZepetoAnalytics\\\").GetComponent<ZepetoAnalytics>();\\r\\n   
+    }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Loading Image Start\\r\\n    *StartLoading() {\\r\\n        let isLoading = true;\\r\\n       
+    while (UIManager_1.default.instance == null) {\\r\\n            yield null;\\r\\n       
+    }\\r\\n        UIManager_1.default.instance.PlayLoading();\\r\\n        // UIManager.instance.LOADING_START);
+    \\r\\n        // loadingUI.SetActive(true);\\r\\n        ZEPETO_Character_Controller_1.ZepetoPlayers.instance.controllerData.inputAsset.Disable();\\r\\n       
+    const baseData = GameBaseData_1.default.instance;\\r\\n        // let waitForSeconds
+    = new WaitForSeconds(2);\\r\\n        while (isLoading) {\\r\\n            if
+    (this.room != null && this.room.IsConnected) {\\r\\n                if (ZEPETO_Character_Controller_1.ZepetoPlayers.instance.HasPlayer(this.room.SessionId))
+    {\\r\\n                    isLoading = false;\\r\\n                    ZEPETO_Character_Controller_1.ZepetoPlayers.instance.controllerData.inputAsset.Enable();\\r\\n                   
+    this.NPCSetting();\\r\\n                    this.questState = UIManager_1.default.instance.StartQuest();\\r\\n                   
+    this.DroneObj = UnityEngine_1.GameObject.Find(\\\"Drone_Animation_Handler\\\");\\r\\n                   
+    this.DroneObj.SetActive(false);\\r\\n                    // this.npcSpace_obj.SetActive(true);\\r\\n                   
+    UIManager_1.default.instance.StopLoading();\\r\\n                    // UIManager.instance.LOADING_START);
+    \\r\\n                }\\r\\n            }\\r\\n            yield new UnityEngine_1.WaitForSeconds(2);
+    //GameBaseData.instance.WaitForSecond_2;//waitForSeconds;\\r\\n        }\\r\\n       
+    this.StopCoroutine(this.StartLoading());\\r\\n        // UIManager.instance.StartQuest();\\r\\n   
+    }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Loading Image END\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Raycast Button Start\\r\\n    SwitchButtonScript(btn) {\\r\\n        // if(this.room
+    == null)\\r\\n        //     this.room = ClientStarter.instance.room;\\r\\n       
+    let names = btn.name.split(`_`); // \uC774\uB984 \uBD84\uD560\uB85C \uC778\uD55C
+    \uC2A4\uD06C\uB9BD\uD2B8 \uBD84\uB958   ex) Button_Speed => ButtonScript_SpeedUp\\r\\n       
+    switch (names[0]) {\\r\\n            case \\\"Button\\\":\\r\\n               
+    switch (names[1]) {\\r\\n                    case \\\"Chair\\\":\\r\\n                       
+    this.ButtonScript_PlayerSitDown(btn);\\r\\n                        break;\\r\\n                   
+    case \\\"Building\\\":\\r\\n                        UIManager_1.default.instance.ShowPopUp(\\\"UI_POP_\\\"
+    + names[2]);\\r\\n                        break;\\r\\n                }\\r\\n               
+    break;\\r\\n            case \\\"NPC\\\":\\r\\n                switch (names[1])
+    {\\r\\n                    case \\\"Danger\\\":\\r\\n                       
+    this.NPCFind(btn.parent.parent.parent);\\r\\n                        break;\\r\\n                   
+    case \\\"Bang\\\":\\r\\n                        btn.parent.gameObject.SetActive(false);\\r\\n                       
+    this.questState = UIManager_1.default.instance.StartQuest();\\r\\n                       
+    break;\\r\\n                    // case \\\"WorldTop\\\" :\\r\\n                   
+    //     UIManager.instance.ShowPopUp(\\\"UI_POP_WorldTop\\\");\\r\\n                   
+    //     break;\\r\\n                }\\r\\n                break;\\r\\n           
+    default:\\r\\n                console.error(`\uC774\uB984\uC774 \uC124\uC815\uB418\uC9C0
+    \uC54A\uC740 \uBC84\uD2BC\uC774 \uC788\uC2B5\uB2C8\uB2E4. ${btn.name}`);\\r\\n               
+    break;\\r\\n        }\\r\\n    }\\r\\n    /// quest Start coroutine\\r\\n   
+    QuestStart() {\\r\\n        this.StartCoroutine(this._QuestStart());\\r\\n   
+    }\\r\\n    *_QuestStart() {\\r\\n        UIManager_1.default.instance.PlayEff(0);\\r\\n       
+    yield new UnityEngine_1.WaitForSeconds(2); //GameBaseData.instance.WaitForSecond_2;\\r\\n       
+    UIManager_1.default.instance.SetTimer(true);\\r\\n        UIManager_1.default.instance.SetQuestCnt(true,
+    this.collectSPNPCcnt);\\r\\n        this.NPCsTr.gameObject.SetActive(true);\\r\\n       
+    this.MapCtrl.IconOnOff(true);\\r\\n        this.MapCtrl.ActiveNPCQuestTarget(this.spNum.toString());\\r\\n       
+    this.StopCoroutine(this._QuestStart());\\r\\n    }\\r\\n    *QuestClear() {\\r\\n       
+    UIManager_1.default.instance.PlayEff(1);\\r\\n        yield new UnityEngine_1.WaitForSeconds(2);
+    //GameBaseData.instance.WaitForSecond_2;\\r\\n        this.questState = UIManager_1.default.instance.StartQuest();\\r\\n       
+    UIManager_1.default.instance.SetTimer(false);\\r\\n        // UIManager.instance.SetQuestCnt(false,
+    this.collectSPNPCcnt);\\r\\n        this.NPCsTr.gameObject.SetActive(false);\\r\\n       
+    this.DroneObj.SetActive(true);\\r\\n        this.MapCtrl.IconOnOff(false);\\r\\n       
+    this.StopCoroutine(this.QuestClear());\\r\\n        // this.StopAllCoroutines();\\r\\n       
+    this.npcSpace_obj.GetComponent($typeof(NPCSpaceMove_1.default)).SpaceOn();\\r\\n   
+    }\\r\\n    // NPC \uBC30\uCE58\\r\\n    NPCSetting() {\\r\\n        // NPC \uD560\uB2F9\\r\\n       
+    let NPCsCtrl = UnityEngine_1.GameObject.Find(\\\"NPCPoints\\\").GetComponentsInChildren($typeof(NPCController_1.default));\\r\\n       
+    this.NPCsTr = NPCsCtrl[0].transform.parent.transform;\\r\\n        let waterNPCs
+    = new Array();\\r\\n        let gasNPCs = new Array();\\r\\n        let sudoNPCs
+    = new Array();\\r\\n        NPCsCtrl.forEach((tr) => {\\r\\n            let NPCbtn
+    = tr.transform.GetChild(0);\\r\\n            let star = NPCbtn.GetChild(0).GetChild(3);\\r\\n           
+    let npcType = NPCbtn.name.split(\\\"_\\\")[2];\\r\\n            switch (npcType)
+    {\\r\\n                case \\\"water\\\":\\r\\n                    let waterType
+    = NPCbtn.name.split(\\\"_\\\")[3];\\r\\n                    NPCbtn.GetChild(0).GetChild(4).gameObject.SetActive(false);\\r\\n                   
+    NPCbtn.GetChild(0).GetChild(5).gameObject.SetActive(false);\\r\\n                   
+    NPCbtn.GetChild(0).GetChild(6).gameObject.SetActive(false);\\r\\n                   
+    switch (waterType) {\\r\\n                        case \\\"drought\\\":\\r\\n                           
+    NPCbtn.GetChild(0).GetChild(4).gameObject.SetActive(true);\\r\\n                           
+    break;\\r\\n                        case \\\"flood\\\":\\r\\n                           
+    NPCbtn.GetChild(0).GetChild(5).gameObject.SetActive(true);\\r\\n                           
+    break;\\r\\n                        case \\\"algal\\\":\\r\\n                           
+    NPCbtn.GetChild(0).GetChild(6).gameObject.SetActive(true);\\r\\n                           
+    break;\\r\\n                    }\\r\\n                    waterNPCs.push(NPCbtn);\\r\\n                   
+    break;\\r\\n                case \\\"gas\\\":\\r\\n                    gasNPCs.push(NPCbtn);\\r\\n                   
+    break;\\r\\n                case \\\"sudo\\\":\\r\\n                    sudoNPCs.push(NPCbtn);\\r\\n                   
+    break;\\r\\n            }\\r\\n            star.gameObject.SetActive(false);\\r\\n           
+    tr.gameObject.SetActive(false);\\r\\n        });\\r\\n        // \uAC01 NPC ON,OFF\\r\\n       
+    this.TransformArraySuffle(waterNPCs);\\r\\n        this.TransformArraySuffle(gasNPCs);\\r\\n       
+    this.TransformArraySuffle(sudoNPCs);\\r\\n        this.spNum = Math.floor(Math.random()
+    * 3);\\r\\n        for (let i = 0; i < 4; i++) {\\r\\n            waterNPCs[i].parent.gameObject.SetActive(true);\\r\\n           
+    gasNPCs[i].parent.gameObject.SetActive(true);\\r\\n            sudoNPCs[i].parent.gameObject.SetActive(true);\\r\\n           
+    console.log(waterNPCs[i].name, i, waterNPCs[i].gameObject.activeSelf);\\r\\n           
+    switch (this.spNum) {\\r\\n                case 0:\\r\\n                    this.SetSP(waterNPCs[i]);\\r\\n                   
+    break;\\r\\n                case 1:\\r\\n                    this.SetSP(gasNPCs[i]);\\r\\n                   
+    break;\\r\\n                case 2:\\r\\n                    this.SetSP(sudoNPCs[i]);\\r\\n                   
+    break;\\r\\n            }\\r\\n            waterNPCs[i].parent.GetComponent($typeof(NPCController_1.default)).SetEffect();\\r\\n           
+    gasNPCs[i].parent.GetComponent($typeof(NPCController_1.default)).SetEffect();\\r\\n           
+    sudoNPCs[i].parent.GetComponent($typeof(NPCController_1.default)).SetEffect();\\r\\n       
+    }\\r\\n        UIManager_1.default.instance.SetQuestCntImg(this.spNum);\\r\\n       
+    this.NPCsTr.gameObject.SetActive(false);\\r\\n        this.MapCtrlObj.SetActive(true);\\r\\n       
+    this.MapCtrl = this.MapCtrlObj.GetComponent($typeof(MapController_1.default));\\r\\n       
+    this.MapCtrl.NPCSet();\\r\\n        this.MapCtrl.IconOnOff(false);\\r\\n       
+    this.MapCtrlObj.SetActive(false);\\r\\n    }\\r\\n    TransformArraySuffle(array)
+    {\\r\\n        array.sort(() => Math.random() - 0.5);\\r\\n    }\\r\\n    SetSP(NPCtr)
+    {\\r\\n        let NPCCtrl = NPCtr.parent.GetComponent($typeof(NPCController_1.default));\\r\\n       
+    NPCCtrl.isChecked = true;\\r\\n        NPCtr.GetChild(0).GetChild(3).gameObject.SetActive(true);\\r\\n   
+    }\\r\\n    NPCFind(npc) {\\r\\n        const nc = npc.GetComponent($typeof(NPCController_1.default));\\r\\n       
+    // if(nc == null)\\r\\n        //     return;\\r\\n        let isSP = nc.FindedNPCAction();\\r\\n       
+    if (isSP) {\\r\\n            UIManager_1.default.instance.SetQuestCnt(true, ++this.collectSPNPCcnt);\\r\\n           
+    if (this.collectSPNPCcnt >= 4) {\\r\\n                nc.MissionComplete();\\r\\n               
+    this.StartCoroutine(this.QuestClear());\\r\\n            }\\r\\n        }\\r\\n       
+    this.MapCtrl.NPCTrace(npc.name);\\r\\n    }\\r\\n    // CheckingNPC(npc: Transform)\\r\\n   
+    // {\\r\\n    //     const nc = npc.GetComponentInParent<NPCController>();\\r\\n   
+    //     if(nc == null)\\r\\n    //         return;\\r\\n    //     nc.MissionComplete();\\r\\n   
+    // }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////
+    NPC Quest END\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////
+    Sit Chair\\r\\n    ButtonScript_PlayerSitDown(trans) {\\r\\n        const chair
+    = this.SitButtonActivate(trans, false);\\r\\n        const sitPosition = chair.GetChild(1);\\r\\n       
+    ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.Teleport(sitPosition.position,
+    sitPosition.rotation);\\r\\n        this.StartCoroutine(this.StartContinuousAnimation());\\r\\n   
+    }\\r\\n    *StartContinuousAnimation() {\\r\\n        // this.SendSitState(true);\\r\\n       
+    const character = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character;\\r\\n       
+    console.log(character.ZepetoAnimator.GetBool(\\\"isSit\\\"));\\r\\n        while
+    (character.ZepetoAnimator.GetBool(\\\"isSit\\\")) {\\r\\n            yield null;\\r\\n       
+    }\\r\\n        character.ZepetoAnimator.SetBool(\\\"isSit\\\", true);\\r\\n       
+    console.log(character.ZepetoAnimator.name);\\r\\n        console.log(character.ZepetoAnimator.GetBool(\\\"isSit\\\"));\\r\\n       
+    this.StopCoroutine(this.StartContinuousAnimation());\\r\\n    }\\r\\n    PlayerSitOut(trans)
+    {\\r\\n        // this.SendSitState(false);\\r\\n        ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.ZepetoAnimator.SetBool(\\\"isSit\\\",
+    false);\\r\\n        let chair = this.SitButtonActivate(trans, true);\\r\\n       
+    let sitPosition = chair.GetChild(1);\\r\\n        let look = UnityEngine_1.Vector3.op_Addition(sitPosition.position,
+    (UnityEngine_1.Vector3.op_Multiply(sitPosition.forward, 0.3)));\\r\\n       
+    ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.Teleport(look,
+    sitPosition.rotation);\\r\\n    }\\r\\n    SitButtonActivate(trans, isActive)
+    {\\r\\n        const chair = trans.parent.parent;\\r\\n        chair.GetComponent($typeof(UnityEngine_1.BoxCollider)).enabled
+    = isActive;\\r\\n        const collider = trans.GetComponent($typeof(UnityEngine_1.BoxCollider));\\r\\n       
+    const renderer = trans.GetComponent($typeof(UnityEngine_1.SpriteRenderer));\\r\\n       
+    const sitPointCollider = chair.GetChild(1).GetComponents($typeof(UnityEngine_1.BoxCollider))[0];\\r\\n       
+    if (collider)\\r\\n            collider.enabled = isActive;\\r\\n        if (renderer)\\r\\n           
+    renderer.enabled = isActive;\\r\\n        if (sitPointCollider)\\r\\n           
+    sitPointCollider.enabled = !isActive;\\r\\n        return chair;\\r\\n    }\\r\\n}\\r\\nexports.default
+    = GameManager;\\r\\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiR2FtZU1hbmFnZXIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJHYW1lTWFuYWdlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLDZDQUFxSDtBQUNySCw2RUFBNEQ7QUFFNUQsaURBQXNEO0FBRXRELDhEQUF1RDtBQUN2RCxvREFBNkM7QUFDN0MsdURBQWdEO0FBQ2hELGlEQUEwQztBQUMxQywyQ0FBb0M7QUFDcEMsdURBQWdEO0FBQ2hELG9EQUE2QztBQUM3QyxrREFBMkM7QUFFM0MsTUFBcUIsV0FBWSxTQUFRLHFDQUFxQjtJQUE5RDs7UUFVSSw2Q0FBNkM7UUFFN0MsMERBQTBEO1FBQzFELHVIQUF1SDtRQUVoSCxlQUFVLEdBQVksQ0FBQyxDQUFDO1FBa0p2QixVQUFLLEdBQVcsQ0FBQyxDQUFDO1FBd0YxQiw0R0FBNEc7UUFDcEcsb0JBQWUsR0FBWSxDQUFDLENBQUM7UUFvRnJDLDZCQUE2QjtRQUM3QixJQUFJO1FBQ0osK0NBQStDO1FBQy9DLElBQUk7UUFDSixnSEFBZ0g7UUFDaEgsNkhBQTZIO0lBQ2pJLENBQUM7SUFoVlUsTUFBTSxLQUFLLFFBQVEsS0FBa0IsT0FBTyxXQUFXLENBQUMsU0FBUyxDQUFDLENBQUMsQ0FBQztJQVkzRSwyQ0FBMkM7SUFDM0Msa0hBQWtIO0lBQ2xILEtBQUs7SUFHTCxDQUFDO0lBQ0QsS0FBSztRQUVELFdBQVcsQ0FBQyxTQUFTLEdBQUcsSUFBSSxDQUFDO1FBRTdCLElBQUksQ0FBQyxTQUFTLGlCQUFnQixDQUFDLElBQVcsRUFBRSxFQUFFO1lBQzFDLElBQUksQ0FBQyxJQUFJLEdBQUcsSUFBSSxDQUFDO1FBQ3JCLENBQUMsRUFBQztRQUNGLHNDQUFzQztRQUN0QywyRkFBMkY7UUFDM0Ysd0JBQXdCO1FBQ3hCLCtDQUErQztRQUMvQyxJQUFJLENBQUMsY0FBYyxDQUFDLElBQUksQ0FBQyxZQUFZLEVBQUUsQ0FBQyxDQUFDO1FBRXpDLHlCQUF5QjtRQUN6Qix3RUFBd0U7UUFDeEUsNkZBQTZG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\",\"assetPath\":\"Assets/Scripts/Managers/GameManager.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"ZEPETO.World\",\"name\":\"multiplay\",\"type\":\"ZEPETO.World.ZepetoWorldMultiplay\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"mscorlib\",\"name\":\"questState\",\"type\":\"System.Single\",\"isArray\":false,\"initValue\":[\"0\"],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"npcSpace_obj\",\"type\":\"UnityEngine.GameObject\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]},{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"MapCtrlObj\",\"type\":\"UnityEngine.GameObject\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"GameManager\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: b9115cbc2bf06a9b6c9a7ed59640a2a5
+  onlyWriteTrigger: 0

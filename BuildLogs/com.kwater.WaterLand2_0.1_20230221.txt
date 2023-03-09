@@ -1,0 +1,335 @@
+[World Settings]
+world id             com.kwater.waterland2
+version              0.1                 
+max clients          8                   
+orientation          horizontal          
+disable invite       false               
+disable room list    false               
+disable private room false               
+
+[Build Manifest]
+[scenes]
+13 mb                assets/scenes/k-water.unity
+[assets]
+2 kb                 assets/material/materials/glass 1.mat
+2 kb                 assets/res/recycleresource/effect/4_fire/materials/mat_glow.mat
+2 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_off.anim
+5 mb                 assets/res/images/sky/02 front.png
+29 kb                assets/res/images/ui/안내판/화살표.png
+2 kb                 assets/material/firework_particle/firework3.mat
+35 kb                packages/zepeto.character.controller/runtime/_resources/inputactions/zepetoinputcontrol.inputactions
+2 kb                 assets/res/materials & textures/underwater blue.mat
+600 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/landing_slight.anim
+549 b                assets/res/screenshot/ui/images/trnsbg.png
+4 kb                 assets/res/images/ui/questcnt/오브젝트ui_3.png
+11 kb                assets/res/screenshot/ui/images/ic_cameramode.png
+12 kb                assets/material/firework_particle/star.png
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/walk.anim
+22 kb                assets/res/images/느낌표.png
+222 kb               assets/res/0changed_updates19.01/info_bouard/info_board_defaultmaterial_albedotransparency.jpg
+56 kb                assets/res/images/ui/popup/building/수돗물안전확보/swm.png
+137 kb               assets/material/materials/제방2.png
+2 kb                 assets/res/materials & textures/water_grid 104.mat
+30 kb                assets/res/screenshot/ui/images/image_gesture_ok.png
+2 kb                 assets/res/images/ui/안내판/s2.mat
+2 kb                 assets/res/recycleresource/effect/4_fire/materials/mat_sparks.mat
+67 kb                assets/res/images/ui/popup/building/수돗물안전확보/초순수 생산시설.png
+2 kb                 assets/material/materials/groundshadow0.mat
+2 kb                 assets/res/materials & textures/underwater red.mat
+4 kb                 assets/res/images/ui/questcnt/오브젝트ui_0.png
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/jump_move.anim
+27 kb                packages/zepeto.character.controller/runtime/_resources/prefabs/uicontroller_touchpad_horizontal.prefab
+574 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/landing_roll.anim
+950 kb               assets/res/animation/npc/bang/bang_hand_shaking_update.fbx
+6 kb                 assets/res/images/ui/popup/quest/이전버튼.png
+141 kb               assets/res/recycleresource/textures/water 1.png
+27 kb                packages/zepeto.character.controller/runtime/_resources/prefabs/uicontroller_touchpad_vertical.prefab
+3 kb                 assets/res/screenshot/selfiestick/bundles/selfiestick_long.prefab
+1 kb                 packages/com.unity.inputsystem/inputsystem/editor/icons/inputsystemuiinputmodule@64.png
+112 kb               assets/res/수열관로1.fbx
+312 kb               assets/res/model/k_water_monster01_ani_r01_hr.fbx
+12 kb                assets/res/screenshot/ui/toasterrormessage.prefab
+2 kb                 assets/material/materials/zepeto_colorchart_1k.mat
+148 kb               assets/res/images/ui/popup/quest/팝업2-1.png
+443 kb               assets/res/images/ui/안내판/kwaterg.png
+42 kb                assets/res/images/ui/popup/말풍선2.png
+627 kb               assets/res/font/kotra_bold.ttf
+2 kb                 assets/res/materials & textures/water3-3.mat
+2 kb                 assets/res/materials & textures/water stop.mat
+442 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/jump_move.anim
+18 kb                assets/res/animation/drone/idle.anim
+209 kb               assets/res/0changed_updates19.01/text3.fbx
+4 kb                 assets/res/screenshot/selfiecamera.prefab
+62 kb                packages/zepeto.character.controller/runtime/_resources/animations/base/gesture.anim
+324 kb               assets/res/materials & textures/material/camping_car.png
+27 kb                assets/res/0changed_updates19.01/info_bouard/info_board.fbx
+2 kb                 assets/res/materials & textures/cam_cp_plants_01 2.mat
+55 kb                assets/res/images/ui/popup/building/물재해예방/워터그리드_.png
+34 kb                assets/text.prefab  
+18 kb                packages/zepeto.character.controller/runtime/_resources/animatorcontroller/zepetoanimator.controller
+3 kb                 assets/res/screenshot/ui/images/ic_camera.png
+8 kb                 assets/res/screenshot/ui/images/ic_transparent.png
+55 kb                assets/res/images/ui/popup/building/온실가스감축/그린수소.png
+2 kb                 assets/res/images/sky/skybox_mat.mat
+5 mb                 assets/res/images/sky/01 right.png
+1 kb                 assets/res/screenshot/ui/images/image_ellipse_red.png
+560 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/idle.anim
+2 kb                 assets/prefabs/zepetoanalytics.prefab
+2 kb                 assets/res/0changed_updates19.01/sand/sand.mat
+5 kb                 assets/res/images/ui/popup/button/x버튼.png
+2 kb                 assets/res/materials & textures/glass.mat
+2 kb                 assets/res/materials & textures/water foun.mat
+2 kb                 assets/res/recycleresource/material & shaders/sky.mat
+2 kb                 assets/res/0changed_updates19.01/sidewalk/sidewalk.mat
+2 kb                 assets/res/materials & textures/water3-4.mat
+5 kb                 assets/material/firework_particle/sprite_firework.png
+435 b                assets/res/screenshot/ui/images/ic_arlet.png
+2 kb                 assets/res/0changed_updates19.01/sun_battary/sun_battary.mat
+4 mb                 assets/res/[메타버즈] k-water_제페토 월드_bgm_3안_shadowing.mp3
+14 kb                assets/material/firework_particle/firework_circle.png
+146 kb               assets/res/model/see_cloud.fbx
+131 kb               assets/material/materials/제방용.png
+198 kb               assets/res/images/ui/로딩/loading_ 1.png
+14 kb                assets/res/images/ui/etc/미니맵_아이콘수정.png
+11 kb                assets/info.prefab  
+374 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/move_run_fast.anim
+5 kb                 assets/res/animation/npc/bang/bang_goo.controller
+12 kb                assets/res/recycleresource/effect/4_fire/textures/txt_sparks_01.tga
+2 kb                 assets/res/materials & textures/cam_cp_plants_04.mat
+19 kb                assets/res/recycleresource/textures/star_01.png
+828 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/move_turn.anim
+1 mb                 assets/res/recycleresource/anim/animation/dream_chair_ani01.fbx
+2 kb                 assets/res/materials & textures/campfire.mat
+1 kb                 assets/res/screenshot/ui/images/image_ellipse_green.png
+8 kb                 assets/res/screenshot/ui/images/ic_selfiemode.png
+41 kb                assets/res/images/ui/popup/building/물재해예방/댐.png
+54 kb                assets/res/images/ui/popup/building/물재해예방/에코봇.png
+791 kb               assets/res/images/ui/etc/미니맵_수정.png
+2 kb                 assets/res/move2/line001.prefab
+4 mb                 assets/res/images/sky/04 back.png
+1008 kb              assets/res/animation/npc/bang/bang_goo.fbx
+4 mb                 assets/res/model/k-waterbuilding.fbx
+5 kb                 assets/res/recycleresource/images/상호박용버튼ui-removebg-preview (1).png
+445 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/move_run.anim
+2 kb                 assets/material/firework_particle/firework2.mat
+2 kb                 assets/res/screenshot/ui/images/ic_gesture.png
+323 kb               assets/res/0changed_updates19.01/re100.fbx
+2 kb                 assets/material/firework_particle/firework4.mat
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/jump_idle.anim
+13 kb                assets/res/object104 (1).fbx
+2 kb                 assets/res/move2/line001 (1).prefab
+5 kb                 assets/res/images/ui/popup/button/확인버튼.png
+2 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_origin_off.anim
+70 kb                assets/res/images/ui/popup/building/수돗물안전확보/분산형 정수처리시설.png
+2 kb                 assets/res/recycleresource/material & shaders/star_01.mat
+5 kb                 assets/res/animation/npc/bang/bang_hand.controller
+43 kb                assets/res/images/ui/popup/말풍선4.png
+1 kb                 assets/res/animation/npc/npc_anim_01.controller
+1 mb                 assets/res/recycleresource/effect/4_fire/textures/txt_fire_01.tga
+271 kb               assets/res/model/fss_tree_002.fbx
+5 kb                 packages/zepeto.character.controller/runtime/_resources/images/touchpad_handle_icon.png
+3 kb                 assets/res/env/chungju_airport/model/objmodel/cloudplane.mesh
+5 kb                 packages/zepeto.character.controller/runtime/_resources/images/touchpad_jump_icon.png
+4 kb                 assets/res/[ test ]/test_npc 01.png
+24 kb                assets/res/recycleresource/textures/circle5.png
+5 mb                 assets/res/materials & textures/material/tent_bottom.png
+2 kb                 assets/res/0changed_updates19.01/info_bouard/inf.mat
+19 kb                assets/res/0changed_updates19.01/sidewalk/plane_defaultmaterial_basemap.jpg
+4 kb                 assets/res/[ test ]/test_npc 03.png
+2 kb                 assets/res/images/ui/안내판/skyinfo.mat
+688 kb               assets/prefabs/firework.prefab
+1 mb                 assets/res/0changed_updates19.01/ground_updated.fbx
+62 kb                assets/res/images/ui/popup/building/온실가스감축/수력발전소.png
+3 kb                 assets/res/images/ui/questcnt/오브젝트ui_4.png
+3 mb                 assets/material/materials/groundshadow1.tga
+1 mb                 assets/res/materials & textures/material/campfire.png
+404 kb               assets/res/images/ui/안내판/안내판.png
+19 kb                assets/res/animation/drone/landing.anim
+2 kb                 assets/material/materials/groundshadow1.mat
+111 kb               assets/res/screenshot/zepetoscreenshotmodule.prefab
+4 mb                 assets/res/images/sky/03 left.png
+5 kb                 assets/res/animation/npc/bang/bang_idle.controller
+2 kb                 assets/res/recycleresource/material & shaders/water_shader.shader
+305 kb               assets/res/model/k_water_monster02_ani_r01_hr.fbx
+2 kb                 assets/res/0changed_updates19.01/grass/grass 1.mat
+4 mb                 assets/res/images/sky/06 down.png
+79 kb                assets/res/0changed_updates19.01/water_line.fbx
+2 kb                 assets/res/materials & textures/water smart.mat
+464 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/jump_double.anim
+5 kb                 assets/res/recycleresource/frafabs/button_prefab.prefab
+60 kb                assets/res/watergrid-re.fbx
+837 kb               assets/res/materials & textures/other/cam_cp_plants_01_3.png
+60 kb                assets/res/0changed_updates19.01/sidewalk/plane_defaultmaterial_normal.jpg
+8 kb                 assets/res/materials & textures/sub_water.jpg
+270 kb               assets/res/images/ui/etc/mission clear.png
+2 kb                 assets/res/images/ui/안내판/s1.mat
+2 kb                 assets/res/materials & textures/water_grid zero.mat
+13 kb                packages/zepeto.character.controller/runtime/_resources/images/touchpad_handle_base.png
+2 kb                 assets/res/0changed_updates19.01/ground/ground.mat
+2 kb                 assets/material/firework_particle/firework1.mat
+2 kb                 assets/res/0changed_updates19.01/grass/neon2.mat
+2 mb                 assets/res/materials & textures/material/bed_color.png
+27 kb                assets/res/images/ui/etc/악당찾기_온실가스.png
+157 kb               assets/res/수열관로.fbx 
+244 kb               assets/res/materials & textures/cbs_sakura_wood.png
+246 kb               assets/res/materials & textures/material/food.png
+2 kb                 assets/res/materials & textures/water0.mat
+66 kb                assets/res/images/ui/popup/building/물재해예방/스마트 하전제방.png
+988 kb               assets/res/animation/npc/bang/bang_idle.fbx
+62 kb                packages/zepeto.character.controller/runtime/_resources/animations/base/action1.anim
+76 kb                assets/res/model/drone.fbx
+2 kb                 assets/res/materials & textures/cp_tree_01.mat
+52 kb                assets/res/0changed_updates19.01/sun_battary/s_normal.jpg
+4 kb                 assets/res/[ test ]/test_npc 02.png
+2 kb                 assets/res/materials & textures/propeller.mat
+209 kb               assets/res/0changed_updates19.01/info_bouard/text.fbx
+3 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_ziggle.anim
+2 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_on.anim
+3 kb                 assets/res/animation/dronefloating/dronefloating.controller
+1 mb                 assets/res/model/sky_cloud.fbx
+2 kb                 assets/res/recycleresource/material & shaders/teleport_gradient 1.mat
+324 kb               assets/res/materials & textures/zepeto_colorchart.png
+839 b                assets/res/screenshot/zepetoscreenshotrendertexture.rendertexture
+629 kb               assets/res/model/bang.fbx
+32 kb                assets/res/screenshot/ui/images/image_gesture_dance.png
+63 kb                assets/res/images/ui/popup/building/물재해예방/디지털트윈.png
+2 kb                 assets/res/materials & textures/underwater.mat
+2 kb                 assets/res/move2/text2.prefab
+27 kb                assets/res/screenshot/ui/images/image_gesture_sleep.png
+8 kb                 assets/res/recycleresource/textures/sub_water.jpg
+2 kb                 assets/res/env/chungju_airport/material/cloud.mat
+70 kb                assets/res/0changed_updates19.01/info_bouard/info_board_defaultmaterial_normal.jpg
+2 kb                 assets/res/0changed_updates19.01/cloud.mat
+2 kb                 assets/res/plane.014 (1).prefab
+5 kb                 assets/res/screenshot/ui/toastanim.anim
+2 kb                 assets/res/0changed_updates19.01/ss.mat
+7 kb                 packages/zepeto.character.controller/runtime/_resources/animatorcontroller/uicontrollertouchpadhandleorigin.controller
+34 kb                assets/res/recycleresource/models/skysphere.fbx
+4 kb                 assets/res/images/ui/안내판/원.png
+62 kb                packages/zepeto.character.controller/runtime/_resources/animations/base/action2.anim
+4 mb                 assets/res/images/sky/05 up.png
+2 kb                 assets/res/materials & textures/basic_translucent.mat
+8 mb                 assets/scenes/k-water/occlusioncullingdata.asset
+2 kb                 assets/res/recycleresource/effect/4_fire/materials/mat_fire_add.mat
+100 kb               assets/res/images/ui/popup/quest/팝업1.png
+2 kb                 assets/res/recycleresource/material & shaders/teleport_circle.mat
+7 kb                 packages/zepeto.character.controller/runtime/_resources/animatorcontroller/uicontrollertouchpadhandle.controller
+143 kb               assets/res/env/chungju_airport/texture/summer_cloud.png
+27 kb                assets/res/images/ui/etc/악당찾기_물재해.png
+451 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/jump_dash.anim
+62 kb                assets/res/images/ui/popup/building/물재해예방/강우레이터.png
+950 kb               assets/res/materials & textures/other/cam_cp_plants_01_2.png
+489 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/move_walk_fast.anim
+73 kb                assets/res/images/ui/popup/building/수돗물안전확보/스마트정수장.png
+3 kb                 packages/zepeto.character.controller/runtime/_resources/prefabs/shadow/charactershadow.prefab
+2 kb                 assets/res/recycleresource/effect/4_fire/materials/mat_fire_alpha.mat
+8 kb                 assets/res/screenshot/ui/images/image_gesture_view_panel_rectangle.png
+104 kb               assets/res/수열관로0.fbx
+331 kb               assets/res/model/k_water_monster03_ani_r03_hr.fbx
+12 kb                packages/zepeto.character.controller/runtime/_resources/images/touchpad_jump_base.png
+2 kb                 assets/res/materials & textures/water_hasu.mat
+5 kb                 assets/material/firework_particle/sprite_firework_color.png
+10 kb                assets/res/screenshot/ui/images/ic_camera_bg.png
+2 kb                 assets/res/0changed_updates19.01/grass/neon.mat
+5 mb                 packages/zepeto.character.controller/runtime/_resources/animations/gesture/6_dance.anim
+22 kb                assets/res/recycleresource/textures/circle4.png
+57 kb                assets/res/images/ui/popup/building/온실가스감축/조력발전소.png
+3 kb                 assets/res/images/ui/questcnt/오브젝트ui_1.png
+2 kb                 assets/res/materials & textures/underwatergrid.mat
+114 kb               assets/res/0changed_updates19.01/text2.fbx
+2 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_origin_on.anim
+1 kb                 assets/res/animation/npc/npc_anim_02.controller
+5 kb                 assets/res/images/ui/popup/quest/다음버튼.png
+21 kb                assets/res/images/ui/etc/타이머ui.png
+16 kb                assets/res/0changed_updates19.01/sand/sand_side_material _31_metallicsmoothness.jpg
+4 kb                 assets/res/images/ui/questcnt/오브젝트ui_2.png
+2 kb                 assets/res/materials & textures/cam_cp_plants_03.mat
+46 kb                assets/res/images/ui/popup/말풍선3.png
+482 kb               assets/res/materials & textures/other/cam_cp_plants_01_3 1.png
+48 kb                assets/res/materials & textures/textures/other/sk_groundtile_001 1.png
+183 kb               assets/res/images/ui/popup/quest/팝업3 1.png
+60 kb                assets/res/0changed_updates19.01/text.fbx
+27 kb                assets/res/images/ui/etc/악당찾기_수돗물오염.png
+12 kb                assets/res/screenshot/ui/toastsuccessmessage.prefab
+1 kb                 packages/zepeto.character.controller/runtime/_resources/prefabs/shadow/fxt_blobshadow.png
+297 kb               assets/res/recycleresource/anim/animator/zepetoanimatorv2_custom.controller
+2 kb                 assets/material/materials/groundshadow1 1.mat
+8 kb                 assets/res/animation/drone/drone.controller
+2 kb                 assets/res/materials & textures/water_grid_reverse.mat
+133 kb               assets/res/ground13.fbx
+995 b                assets/res/screenshot/ui/images/ic_share.png
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/gesture/4_ok.anim
+14 kb                assets/res/images/ui/questcnt/ui_물재해.png
+144 b                assets/res/screenshot/ui/images/image_gesture_view_title_line.png
+2 kb                 assets/res/recycleresource/material & shaders/teleport_gradient.mat
+1 mb                 assets/res/0changed_updates19.01/ground/plane_defaultmaterial_basemap.jpg
+3 mb                 assets/material/materials/groundshadow0.tga
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/v2/landing_deep.anim
+62 kb                assets/res/images/ui/popup/building/온실가스감축/수열에너지.png
+39 kb                assets/res/images/ui/popup/말풍선1.png
+5 kb                 assets/res/0changed_updates19.01/sun_battary/13 - default_base_color.png
+14 kb                assets/res/images/ui/questcnt/ui_온실가스.png
+36 kb                assets/res/animation/dronefloating/flight 1.anim
+575 b                assets/res/screenshot/ui/images/ic_check.png
+58 kb                assets/res/images/ui/popup/building/물재해예방/빗물저류지.png
+227 kb               assets/res/screenshot/selfiestick/fbx/selfiestick_long.fbx
+6 kb                 assets/res/shaders/treeleaf_01.shader
+2 kb                 assets/res/materials & textures/zepeto_colorchart.mat
+198 kb               assets/res/0changed_updates19.01/grass/b406bde67c5119a39eb84e672bbe829d.jpg
+14 kb                assets/res/images/ui/questcnt/ui_수돗물오염.png
+1 kb                 assets/res/screenshot/ui/images/ic_save.png
+2 kb                 assets/res/materials & textures/colortexture_001.mat
+2 kb                 assets/res/move2/text3.prefab
+22 kb                assets/res/animation/drone/takeoff.anim
+63 kb                assets/res/images/ui/popup/building/온실가스감축/re100 클러스터.png
+330 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/falling.anim
+73 kb                assets/res/0changed_updates19.01/sand/sand_side_material _31_normal.jpg
+4 kb                 assets/res/0changed_updates19.01/info_bouard/info_board_defaultmaterial_metallicsmoothness.jpg
+2 kb                 assets/res/materials & textures/water11.mat
+4 kb                 assets/zepetocamera.prefab
+2 kb                 assets/res/materials & textures/water_grid.mat
+870 kb               assets/res/0changed_updates19.01/ground/plane_defaultmaterial_normal.jpg
+126 kb               assets/res/animation/drone/flight.anim
+111 kb               assets/material/zepeto_colorchart_1k.png
+618 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/jump_idle.anim
+220 kb               assets/res/images/ui/popup/quest/팝업2-2.png
+2 kb                 assets/res/materials & textures/water_grid_blue.mat
+3 mb                 packages/zepeto.character.controller/runtime/_resources/animations/gesture/5_sleep.anim
+451 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/v2/stamp.anim
+4 kb                 assets/res/screenshot/ui/images/ic_close.png
+509 mb               assets/res/model/k-water.fbx
+2 kb                 assets/res/materials & textures/cam_cp_plants_02.mat
+9 kb                 assets/res/animation/drone/recycle.anim
+15 mb                assets/res/images/sky/kwater-earth.png
+2 kb                 assets/res/materials & textures/basic.mat
+38 kb                assets/res/0changed_updates19.01/sun_battary/sun_battary.fbx
+268 kb               assets/res/images/ui/etc/mission start.png
+70 kb                assets/res/0changed_updates19.01/sidewalk/plane_defaultmaterial_maskmap.jpg
+940 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/run.anim
+470 kb               assets/material/materials/cp_ground_tile_03.png
+330 b                assets/res/screenshot/ui/images/ic_upload.png
+66 kb                assets/res/images/ui/popup/building/온실가스감축/수상태양광.png
+1 kb                 assets/res/recycleresource/material & shaders/gradation.shader
+587 kb               assets/res/0changed_updates19.01/ground/plane_defaultmaterial_maskmap.jpg
+372 kb               assets/res/0changed_updates19.01/sand/sand_side_material _31_albedotransparency.png
+2 kb                 assets/res/0changed_updates19.01/text.mat
+28 kb                assets/res/materials & textures/colortexture_001.png
+60 kb                assets/res/0changed_updates19.01/skysphere.prefab
+2 kb                 assets/res/materials & textures/water_grid_red.mat
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/v2/move_walk.anim
+2 kb                 assets/res/0changed_updates19.01/cross_line.mat
+2 kb                 packages/zepeto.character.controller/runtime/_resources/prefabs/shadow/fxt_blobshadow.mat
+2 kb                 assets/res/images/sky/earth.mat
+2 kb                 packages/zepeto.character.controller/runtime/_resources/prefabs/eventsystem.prefab
+1014 kb              packages/zepeto.character.controller/runtime/_resources/animations/base/v2/idle.anim
+14 kb                assets/res/move2/text (1).prefab
+1 mb                 packages/zepeto.character.controller/runtime/_resources/animations/base/fall_end.anim
+212 kb               assets/res/images/ui/안내판/world top_안내판 이미지_수정_230213.png
+1 mb                 assets/res/images/ui/로딩/로딩화면 1.png
+428 kb               packages/zepeto.character.controller/runtime/_resources/animations/base/hand_idle_01.anim
+31 kb                packages/com.unity.inputsystem/inputsystem/plugins/playerinput/defaultinputactions.inputactions
+24 kb                assets/res/screenshot/ui/images/ic_shutter.png
+3 kb                 packages/zepeto.character.controller/runtime/_resources/animations/ui/controller/touchpad_handle_origin_ziggle.anim
+[resources]
+0 b                  assets/resources    
+[streamingAssets]

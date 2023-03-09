@@ -1,0 +1,53 @@
+fileFormatVersion: 2
+guid: 778ca041fa6625a48855c29930f5241a
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: "{\"source\":\"\\\"use strict\\\";\\r\\nObject.defineProperty(exports,
+    \\\"__esModule\\\", { value: true });\\r\\nconst UnityEngine_1 = require(\\\"UnityEngine\\\");\\r\\nconst
+    ZEPETO_Character_Controller_1 = require(\\\"ZEPETO.Character.Controller\\\");\\r\\nconst
+    ZEPETO_Script_1 = require(\\\"ZEPETO.Script\\\");\\r\\nconst GameBaseData_1 =
+    require(\\\"./Managers/GameBaseData\\\");\\r\\nconst UIManager_1 = require(\\\"./Managers/UIManager\\\");\\r\\nconst
+    ClientStarter_1 = require(\\\"./Multiplay/ClientStarter\\\");\\r\\nclass PhotoZoneFallout
+    extends ZEPETO_Script_1.ZepetoScriptBehaviour {\\r\\n    // private waitForSeconds
+    : WaitForSeconds;\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Property\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Setting\\r\\n    Start() {\\r\\n        this.spawnPoint = UnityEngine_1.GameObject.FindWithTag(\\\"SpawnPoint\\\").transform;\\r\\n       
+    // this.waitForSeconds = new WaitForSeconds(1); // GameBaseData.instance.WaitForSecond_1;\\r\\n   
+    }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Setting END\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Trigger\\r\\n    OnTriggerEnter(collider) {\\r\\n        let baseData = GameBaseData_1.default.instance;\\r\\n       
+    if (!baseData.CanITriggerActivating(collider))\\r\\n            return;\\r\\n       
+    this.StartCoroutine(this.CharacterFallingOut());\\r\\n    }\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Trigger END\\r\\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Teleport\\r\\n    *CharacterFallingOut() {\\r\\n        // let client = ClientStarter.instance;\\r\\n       
+    // if(client.isCoroutinePlaying)\\r\\n        //     return;\\r\\n        //
+    client.isCoroutinePlaying = true;\\r\\n        // client.SendRoomServerLog(`\uC6D4\uB4DC
+    \uBC16\uC73C\uB85C \uB5A8\uC5B4\uC84C\uC2B5\uB2C8\uB2E4.`);\\r\\n        // console.log(`
+    \uC6D4\uB4DC \uBC16\uC73C\uB85C \uB5A8\uC5B4\uC84C\uC2B5\uB2C8\uB2E4. `);\\r\\n       
+    let fadeManager = UIManager_1.default.instance;\\r\\n        fadeManager.PlayFadeInOut(fadeManager.FADE_FALLOUT);\\r\\n       
+    yield new UnityEngine_1.WaitForSeconds(1); //this.waitForSeconds; //GameBaseData.instance.WaitForSecond_1;//\\r\\n       
+    let character = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character;\\r\\n       
+    character.enabled = false;\\r\\n        ZEPETO_Character_Controller_1.ZepetoPlayers.instance.controllerData.inputAsset.Disable();\\r\\n       
+    character.StopMoving();\\r\\n        character.Teleport(this.spawnPoint.position,
+    UnityEngine_1.Quaternion.identity); // \uBCF5\uADC0\\r\\n        // client.isCoroutinePlaying
+    = false;\\r\\n        ZEPETO_Character_Controller_1.ZepetoPlayers.instance.controllerData.inputAsset.Enable();\\r\\n       
+    character.enabled = true;\\r\\n    }\\r\\n}\\r\\nexports.default = PhotoZoneFallout;\\r\\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUGhvdG9ab25lRmFsbG91dC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIlBob3RvWm9uZUZhbGxvdXQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSw2Q0FBbUc7QUFDbkcsNkVBQTREO0FBQzVELGlEQUFxRDtBQUNyRCwwREFBbUQ7QUFDbkQsb0RBQTZDO0FBQzdDLDZEQUFzRDtBQUV0RCxNQUFxQixnQkFBaUIsU0FBUSxxQ0FBcUI7SUFJL0QsMkNBQTJDO0lBQzNDLG1IQUFtSDtJQUNuSCxrSEFBa0g7SUFDbEgsS0FBSztRQUVELElBQUksQ0FBQyxVQUFVLEdBQUcsd0JBQVUsQ0FBQyxXQUFXLENBQUMsWUFBWSxDQUFDLENBQUMsU0FBUyxDQUFDO1FBQ2pFLHlGQUF5RjtJQUM3RixDQUFDO0lBQ0Qsc0hBQXNIO0lBQ3RILGtIQUFrSDtJQUNsSCxjQUFjLENBQUMsUUFBaUI7UUFFNUIsSUFBSSxRQUFRLEdBQUcsc0JBQVksQ0FBQyxRQUFRLENBQUM7UUFDckMsSUFBRyxDQUFDLFFBQVEsQ0FBQyxxQkFBcUIsQ0FBQyxRQUFRLENBQUM7WUFDeEMsT0FBTztRQUVYLElBQUksQ0FBQyxjQUFjLENBQUMsSUFBSSxDQUFDLG1CQUFtQixFQUFFLENBQUMsQ0FBQztJQUNwRCxDQUFDO0lBQ0Qsc0hBQXNIO0lBQ3RILG1IQUFtSDtJQUMzRyxDQUFFLG1CQUFtQjtRQUV6Qix1Q0FBdUM7UUFFdkMsZ0NBQWdDO1FBQ2hDLGNBQWM7UUFFZCxvQ0FBb0M7UUFFcEMsOENBQThDO1FBQzlDLG1DQUFtQztRQUVuQyxJQUFJLFdBQVcsR0FBRyxtQkFBUyxDQUFDLFFBQVEsQ0FBQztRQUNyQyxXQUFXLENBQUMsYUFBYSxDQUFDLFdBQVcsQ0FBQyxZQUFZLENBQUMsQ0FBQztRQUNwRCxNQUFNLElBQUksNEJBQWMsQ0FBQyxDQUFDLENBQUMsQ0FBQyxDQUFDLGlFQUFpRTtRQUU5RixJQUFJLFNBQVMsR0FBRywyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxXQUFXLENBQUMsWUFBWSxDQUFDLFNBQVMsQ0FBQztRQUMxRSxTQUFTLENBQUMsT0FBTyxHQUFHLEtBQUssQ0FBQztRQUMxQiwyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxjQUFjLENBQUMsVUFBVSxDQUFDLE9BQU8sRUFBRSxDQUFDO1FBQzNELFNBQVMsQ0FBQyxVQUFVLEVBQUUsQ0FBQztRQUN2QixTQUFTLENBQUMsUUFBUSxDQUFDLElBQUksQ0FBQyxVQUFVLENBQUMsUUFBUSxFQUFFLHdCQUFVLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQyxLQUFLO1FBRXhFLHFDQUFxQztRQUNyQywyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxjQUFjLENBQUMsVUFBVSxDQUFDLE1BQU0sRUFBRSxDQUFDO1FBQzFELFNBQVMsQ0FBQyxPQUFPLEdBQUcsSUFBSSxDQUFDO0lBQzdCLENBQUM7Q0FFSjtBQW5ERCxtQ0FtREMifQ==\",\"assetPath\":\"Assets/Scripts/PhotoZoneFallout.ts\",\"manifest\":{\"properties\":[{\"assembly\":\"UnityEngine.CoreModule\",\"name\":\"spawnPoint\",\"type\":\"UnityEngine.Transform\",\"isArray\":false,\"initValue\":[],\"enumKeys\":[],\"enumValues\":[],\"attributes\":[]}],\"name\":\"PhotoZoneFallout\",\"description\":\"\"},\"isCompiled\":true}"
+  typescriptHash: 05dcb473d972496a5b0405894a69fb39
+  onlyWriteTrigger: 0
